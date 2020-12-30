@@ -1,57 +1,43 @@
 VERSION 5.00
-Object = "{C5229D3F-48C7-45CD-88A2-1F2E29893091}#3.0#0"; "ideDataListBox.ocx"
+Object = "*\A..\OCXDataListBox.vbp"
 Begin VB.Form Form1 
-   Caption         =   "Form1"
+   BackColor       =   &H00FFFFFF&
+   Caption         =   "Teste - OCXDataListBox"
    ClientHeight    =   4485
    ClientLeft      =   60
    ClientTop       =   345
-   ClientWidth     =   8925
+   ClientWidth     =   7440
    LinkTopic       =   "Form1"
    ScaleHeight     =   4485
-   ScaleWidth      =   8925
+   ScaleWidth      =   7440
    StartUpPosition =   3  'Windows Default
-   Begin VB.ComboBox cboColunas 
-      Height          =   315
-      ItemData        =   "Form1.frx":0000
-      Left            =   6465
-      List            =   "Form1.frx":0010
-      TabIndex        =   4
-      Text            =   "Combo1"
-      Top             =   3930
-      Width           =   750
-   End
    Begin OCXDataListBox.ideDataListBox ideDataListBox1 
       Align           =   1  'Align Top
       Height          =   3690
       Left            =   0
-      TabIndex        =   3
+      TabIndex        =   4
       Top             =   0
-      Width           =   8925
-      _ExtentX        =   15743
-      _ExtentY        =   6509
-      Caption         =   "Selecionar Itens:"
-      CampoCodigo     =   ""
-      CampoDescricao  =   ""
-      CampoDescricaoFormat=   ""
-      CampoAgrupamento=   ""
-      BeginProperty CaptionFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      BeginProperty ListFont {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   400
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
+      Width           =   7440
+      _extentx        =   13123
+      _extenty        =   6509
+      backcolor       =   14737632
+      caption         =   "Selecionar Itens:"
+      campocodigo     =   ""
+      campodescricao  =   ""
+      campodescricaoformat=   ""
+      campoagrupamento=   ""
+      captionfont     =   "Form1.frx":0000
+      listfont        =   "Form1.frx":0026
+   End
+   Begin VB.ComboBox cboColunas 
+      Height          =   315
+      ItemData        =   "Form1.frx":004E
+      Left            =   6465
+      List            =   "Form1.frx":005E
+      TabIndex        =   3
+      Text            =   "Combo1"
+      Top             =   3930
+      Width           =   750
    End
    Begin VB.CommandButton cmdSelect 
       Caption         =   "Selecionar"
