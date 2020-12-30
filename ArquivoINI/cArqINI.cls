@@ -33,9 +33,7 @@ Private Declare Function WritePrivateProfileString Lib "kernel32" _
 
 Private msPathFile As String
                                                  
-Public Function Ler(ByVal sSeção As String, _
-                    ByVal sChave As String, _
-                    ByVal sDefault As String) As String
+Public Function Ler(ByVal sSecao As String, ByVal sChave As String, ByVal sDefault As String) As String
    
    Dim sTemp As String * 256
    Dim nLength As Integer
@@ -45,9 +43,7 @@ Public Function Ler(ByVal sSeção As String, _
    Ler = Left$(sTemp, nLength)
 End Function
 
-Public Sub Gravar(ByVal sSeção As String, _
-                  ByVal sChave As String, _
-                  ByVal sValor As String)
+Public Sub Gravar(ByVal sSecao As String, ByVal sChave As String, ByVal sValor As String)
    Dim n As Integer
                     
    n = WritePrivateProfileString(sSeção, sChave, sValor, msPathFile)
