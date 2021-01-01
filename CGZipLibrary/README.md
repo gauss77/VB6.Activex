@@ -1,6 +1,6 @@
 # Zip and Unzip Using VB5 or VB6
 
-![Capa](/capture.png?raw=true "Capa")
+![Capa](capture.png?raw=true "Capa")
 
 Author: Chris Eastwood
 Author 's WebSite: http://www.eastwood60.freeserve.co.uk/
