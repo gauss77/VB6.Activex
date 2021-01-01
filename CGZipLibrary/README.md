@@ -31,7 +31,7 @@ End If
 Set oZip = Nothing
 ```
 
-#The code for Unzipping files is just as straight-forward :
+# The code for Unzipping files is just as straight-forward
 ```
 Dim oUnZip As CGUnzipFiles
 
