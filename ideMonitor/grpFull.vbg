@@ -1,0 +1,4 @@
+VBGROUP 5.0
+StartupProject=ActivexEXE\ideMonitorView.vbp
+Project=ActivexDLL\ideMonitor.vbp
+Project=..\Monitor\AddIn\CallStackMonitor.vbp
