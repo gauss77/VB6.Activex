@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "*\A..\Insignia_DSControl.vbp"
+Object = "{C6FEE5AC-DF5F-47A6-BE77-6DCE10AA8AB9}#4.1#0"; "ideDSControl.ocx"
 Begin VB.Form frmSimple 
    Caption         =   "Form4"
    ClientHeight    =   3195
@@ -21,7 +21,9 @@ Begin VB.Form frmSimple
       _ExtentX        =   12938
       _ExtentY        =   714
       Modelo          =   1
-      BackColor       =   14737632
+      BackColor       =   16777215
+      ButtonColor     =   15987699
+      ButtonColorDesab=   14737632
    End
    Begin VB.TextBox Text1 
       DataField       =   "TEXTO"

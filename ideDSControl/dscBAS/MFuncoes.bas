@@ -44,12 +44,12 @@ End Sub
 Public Function ContadorWidth(ByRef pPanel As ideFrame, pOperacao As eDSOperacao, _
                               ByVal pRegAtual As Long, ByVal pRegCount As Long) As Integer
     Dim nFATOR As Long
-    Dim NTOTAL As Long
+'    Dim nTOTAL As Long
     
     On Error Resume Next
     DoEvents
     pPanel.Caption = Format(pRegAtual, "000000") & " / " & Format(pRegCount, "000000")
-    nFATOR = (pPanel.Width - 45) \ pRegCount
+    nFATOR = (pPanel.Width - 30) / pRegCount
     
     If nFATOR = 0 Then nFATOR = 1
     
@@ -61,8 +61,10 @@ Public Function ContadorWidth(ByRef pPanel As ideFrame, pOperacao As eDSOperacao
         If pOperacao = opVisualizacao Then
             pPanel.Enabled = True
         End If
-        NTOTAL = nFATOR * pRegAtual
-        If NTOTAL >= 80 Then ContadorWidth = (NTOTAL) - 80
+'        nTOTAL = nFATOR * pRegAtual
+'        If nTOTAL >= 80 Then ContadorWidth = (nTOTAL) - 80
+
+        ContadorWidth = Int(nFATOR * pRegAtual)
     End If
     On Error GoTo 0
 End Function

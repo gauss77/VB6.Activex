@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "*\A..\Insignia_DSControl.vbp"
+Object = "{C6FEE5AC-DF5F-47A6-BE77-6DCE10AA8AB9}#4.1#0"; "ideDSControl.ocx"
 Begin VB.Form frmMaster 
    Caption         =   "Form2"
    ClientHeight    =   4635
@@ -19,9 +19,12 @@ Begin VB.Form frmMaster
       TabIndex        =   22
       Top             =   0
       Width           =   7890
-      _extentx        =   13917
-      _extenty        =   1429
-      backcolor       =   14737632
+      _ExtentX        =   13917
+      _ExtentY        =   1429
+      ButtonType      =   4
+      ButtonsExtras   =   7
+      ButtonColor     =   16106393
+      BackColor       =   15987699
    End
    Begin VB.TextBox Text1 
       DataField       =   "MEMO"
@@ -269,13 +272,18 @@ Private Sub Form_Load()
   ideDSMaster.Conectar "SELECT * FROM TABELA", SQL & App.Path & "\Teste.mdb;"
   ideDSMaster.MontarPesquisa "Código ID,ID,######|Nome,TEXTO,|Data,DATA,##/##/####|Sim Não,SIMNAO,|Numero,NUMRICO,######|HORA,HORA,##:##:##"
   ideDSMaster.DataSource.AppName = App.EXEName
-  ideDSMaster.Permissoes = peIncluir_Alterar
+  ideDSMaster.Permissoes = peTodos
+  ideDSMaster.ButtonsExtras = beSearch_Requery
   
   Dim O As TextBox
   
   For Each O In Text1
     Set O.DataSource = ideDSMaster.DataSource.RS
   Next
+  
+  If ideDSMaster.DataSource.RS.RecordCount > 0 Then
+    ideDSMaster.DataSource.MoveLast
+  End If
 End Sub
 
 Private Sub ideDSMaster_MoveComplete(ByVal adReason As ADODB.EventReasonEnum, ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)

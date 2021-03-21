@@ -237,6 +237,7 @@ RefreshErr:
 End Sub
 
 Public Function Update() As Boolean
+  Dim bResult As Boolean
   Dim eOpRetorno As eDSOperacao
   Dim bEditAdd As Boolean, nError As Long
   
@@ -274,7 +275,9 @@ Public Function Update() As Boolean
             Me.Resync 'Atualiza o Registro Atual
 '            .Move 0 'forca uma atualiacao dos controles para exibir os dados
           End If
+          
           Me.Operacao = opVisualizacao
+          bResult = True
           
         Else
           Dim oError As Error, sErros As String
@@ -336,6 +339,7 @@ Public Function Update() As Boolean
   
   RaiseEvent DepoisUpdate(eOpRetorno)
     
+  Update = bResult
   Exit Function
     
 TrataErro:
