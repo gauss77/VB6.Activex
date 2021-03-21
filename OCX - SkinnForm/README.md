@@ -1,1 +1,1 @@
-![Capa](/capture.png?raw=true "Capa")
+![Capa](capture.png?raw=true "Capa")
