@@ -1,0 +1,3 @@
+VBGROUP 5.0
+Project=ideToolbar.vbp
+StartupProject=#demo\prjTest.vbp

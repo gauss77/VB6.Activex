@@ -1,0 +1,706 @@
+VERSION 5.00
+Begin VB.PropertyPage ppgTBGeneral 
+   Caption         =   "General"
+   ClientHeight    =   3150
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   6315
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   210
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   421
+   Begin VB.Frame Frame 
+      Caption         =   "Bordas"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   810
+      Index           =   0
+      Left            =   105
+      TabIndex        =   12
+      Top             =   1305
+      Width           =   6090
+      Begin VB.CheckBox chkDoubleBottomBorder 
+         Caption         =   "DoubleBotto&mBorder"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   4185
+         TabIndex        =   18
+         Top             =   510
+         Width           =   1780
+      End
+      Begin VB.CheckBox chkDoubleTopBorder 
+         Caption         =   "Dou&bleTopBorder"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   4185
+         TabIndex        =   17
+         Top             =   240
+         Width           =   1620
+      End
+      Begin VB.CheckBox chkBorderBottom 
+         Caption         =   "&Bottom"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   2268
+         TabIndex        =   15
+         Top             =   240
+         Width           =   870
+      End
+      Begin VB.CheckBox chkBorderRight 
+         Caption         =   "&Right"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   2268
+         TabIndex        =   16
+         Top             =   510
+         Width           =   735
+      End
+      Begin VB.CheckBox chkBorderLeft 
+         Caption         =   "&Left"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   165
+         TabIndex        =   13
+         Top             =   240
+         Width           =   585
+      End
+      Begin VB.CheckBox chkBorderTop 
+         Caption         =   "&Top"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   165
+         TabIndex        =   14
+         Top             =   510
+         Width           =   570
+      End
+   End
+   Begin VB.ComboBox cboAppearance 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      ItemData        =   "pGeneral.pgx":0000
+      Left            =   1305
+      List            =   "pGeneral.pgx":000A
+      Style           =   2  'Dropdown List
+      TabIndex        =   1
+      Top             =   90
+      Width           =   1725
+   End
+   Begin VB.TextBox txtField 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   300
+      Left            =   4485
+      TabIndex        =   3
+      Top             =   97
+      Width           =   750
+   End
+   Begin VB.ComboBox cboStyle 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      ItemData        =   "pGeneral.pgx":0024
+      Left            =   4485
+      List            =   "pGeneral.pgx":002E
+      Style           =   2  'Dropdown List
+      TabIndex        =   11
+      Top             =   900
+      Width           =   1725
+   End
+   Begin VB.Frame Frame 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1005
+      Index           =   1
+      Left            =   105
+      TabIndex        =   19
+      Top             =   2025
+      Width           =   6090
+      Begin VB.CheckBox chkAutoSize 
+         Caption         =   "AutoSi&ze"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   4185
+         TabIndex        =   27
+         Top             =   450
+         Width           =   1080
+      End
+      Begin VB.CheckBox chkBold 
+         Caption         =   "BoldOn&Checked"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   165
+         TabIndex        =   20
+         Top             =   180
+         Width           =   1530
+      End
+      Begin VB.CheckBox chkShowSeparators 
+         Caption         =   "Sho&wSeparators"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   165
+         TabIndex        =   21
+         Top             =   450
+         Width           =   1560
+      End
+      Begin VB.CheckBox chkSolidChecked 
+         Caption         =   "SolidChec&ked"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   165
+         TabIndex        =   22
+         Top             =   720
+         Width           =   1395
+      End
+      Begin VB.CheckBox chkSounds 
+         Caption         =   "Play&Sounds"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   2260
+         TabIndex        =   24
+         Top             =   450
+         Width           =   1230
+      End
+      Begin VB.CheckBox chkShowToolTips 
+         Caption         =   "Show&ToolTips"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   2260
+         TabIndex        =   25
+         Top             =   720
+         Width           =   1380
+      End
+      Begin VB.CheckBox chkDisabled 
+         Caption         =   "DisabledText&3D"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   4185
+         TabIndex        =   26
+         Top             =   180
+         Width           =   1455
+      End
+      Begin VB.CheckBox chkEnabled 
+         Caption         =   "&Enabled"
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   2260
+         TabIndex        =   23
+         Top             =   180
+         Width           =   1050
+      End
+   End
+   Begin VB.ComboBox cboBorderStyle 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      ItemData        =   "pGeneral.pgx":0049
+      Left            =   1305
+      List            =   "pGeneral.pgx":005F
+      Style           =   2  'Dropdown List
+      TabIndex        =   9
+      Top             =   900
+      Width           =   1725
+   End
+   Begin VB.ComboBox cboAlignment 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      ItemData        =   "pGeneral.pgx":00AC
+      Left            =   4485
+      List            =   "pGeneral.pgx":00BC
+      Style           =   2  'Dropdown List
+      TabIndex        =   7
+      Top             =   495
+      Width           =   1725
+   End
+   Begin VB.ComboBox cboCaption 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      ItemData        =   "pGeneral.pgx":00EE
+      Left            =   1305
+      List            =   "pGeneral.pgx":00FB
+      Style           =   2  'Dropdown List
+      TabIndex        =   5
+      Top             =   495
+      Width           =   1725
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Button&Gap: "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   3
+      Left            =   3630
+      TabIndex        =   2
+      Top             =   150
+      Width           =   870
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "St&yle: "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   5
+      Left            =   4035
+      TabIndex        =   10
+      Top             =   960
+      Width           =   465
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Border&Style: "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   0
+      Left            =   375
+      TabIndex        =   8
+      Top             =   960
+      Width           =   945
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "CaptionAlignm&ent: "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   4
+      Left            =   3135
+      TabIndex        =   6
+      Top             =   555
+      Width           =   1365
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Caption&Options: "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   2
+      Left            =   105
+      TabIndex        =   4
+      Top             =   555
+      Width           =   1215
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Appearance: "
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   1
+      Left            =   360
+      TabIndex        =   0
+      Top             =   150
+      Width           =   975
+   End
+End
+Attribute VB_Name = "ppgTBGeneral"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+DefInt A-Z
+
+Private Sub cboAlignment_Click()
+  Changed = -1
+End Sub
+
+
+Private Sub cboAppearance_Click()
+  Changed = -1
+End Sub
+
+
+Private Sub cboBorderStyle_Click()
+  Changed = -1
+End Sub
+
+
+Private Sub cboCaption_Click()
+  Changed = -1
+End Sub
+
+
+Private Sub chkAutoSize_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkBold_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkDisabled_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkDoubleBottomBorder_Click()
+  Changed = -1
+End Sub
+
+
+Private Sub chkDoubleTopBorder_Click()
+  Changed = True
+End Sub
+
+Private Sub chkBorderBottom_Click()
+  Changed = True
+End Sub
+
+Private Sub chkBorderRight_Click()
+  Changed = True
+End Sub
+
+Private Sub chkBorderLeft_Click()
+  Changed = True
+End Sub
+
+
+Private Sub chkBorderTop_Click()
+  Changed = True
+End Sub
+
+
+Private Sub cboStyle_Click()
+  Changed = True
+End Sub
+
+Private Sub chkEnabled_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkShowSeparators_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkSolidChecked_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkSounds_Click()
+  Changed = -1
+End Sub
+
+Private Sub PropertyPage_ApplyChanges()
+  Dim I
+  On Error GoTo ProcErr
+  For I = 0 To SelectedControls.Count - 1
+    With SelectedControls(I)
+      .Redraw = 0
+      .PlaySounds = chkSounds
+      .ShowToolTips = chkShowToolTips
+      .SolidChecked = chkSolidChecked
+      .Style = cboStyle.ListIndex
+      .CaptionOptions = cboCaption.ListIndex
+      .DoubleTopBorder = chkDoubleTopBorder
+      .DoubleBottomBorder = chkDoubleBottomBorder
+      .BorderBottom = chkBorderBottom
+      .BorderRight = chkBorderRight
+      .BorderLeft = chkBorderLeft
+      .BorderTop = chkBorderTop
+      .BorderStyle = cboBorderStyle.ListIndex
+      .Appearance = cboAppearance.ListIndex
+      .ButtonGap = txtField
+      .BoldOnChecked = chkBold
+      .ShowSeparators = chkShowSeparators
+      .AutoSize = chkAutoSize
+      .CaptionAlignment = cboAlignment.ListIndex
+      .DisabledText3D = chkDisabled
+      .Enabled = chkEnabled
+      .Redraw = -1
+      .Refresh
+    End With
+  Next
+  On Error GoTo 0
+  Exit Sub
+
+ProcErr:
+  MsgBox Error$, 16
+  Resume Next
+End Sub
+
+
+
+Private Sub PropertyPage_SelectionChanged()
+  With SelectedControls(0)
+    chkSounds = Abs(.PlaySounds)
+    chkShowToolTips = Abs(.ShowToolTips)
+    chkSolidChecked = Abs(.SolidChecked)
+    chkDoubleTopBorder = Abs(.DoubleTopBorder)
+    chkDoubleBottomBorder = Abs(.DoubleBottomBorder)
+    chkBorderBottom = Abs(.BorderBottom)
+    chkBorderRight = Abs(.BorderRight)
+    chkBorderLeft = Abs(.BorderLeft)
+    chkBorderTop = Abs(.BorderTop)
+    chkDisabled = Abs(.DisabledText3D)
+    chkEnabled = Abs(.Enabled)
+    cboBorderStyle.ListIndex = .BorderStyle
+    cboStyle.ListIndex = .Style
+    cboAppearance.ListIndex = .Appearance
+    cboCaption.ListIndex = .CaptionOptions
+    chkBold = Abs(.BoldOnChecked)
+    chkAutoSize = Abs(.AutoSize)
+    chkShowSeparators = Abs(.ShowSeparators)
+    cboAlignment.ListIndex = .CaptionAlignment
+    txtField = .ButtonGap
+  End With
+  Changed = 0
+End Sub
+
+
+Private Sub txtField_Change()
+  Changed = -1
+End Sub
+
+Private Sub txtField_GotFocus()
+  Highlight txtField
+End Sub
+
+
+Private Sub txtField_KeyPress(KeyAscii As Integer)
+  Dim C$
+  C$ = Chr$(KeyAscii)
+  If C$ < "0" Or C$ > "9" Then
+    If KeyAscii <> 8 Then Beep: KeyAscii = 0
+  End If
+End Sub
+
+

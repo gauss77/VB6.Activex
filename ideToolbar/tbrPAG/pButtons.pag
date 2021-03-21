@@ -1,0 +1,1087 @@
+VERSION 5.00
+Begin VB.PropertyPage ppgTBButtons 
+   Caption         =   "Buttons"
+   ClientHeight    =   3525
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   5895
+   LockControls    =   -1  'True
+   PaletteMode     =   0  'Halftone
+   ScaleHeight     =   235
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   393
+   Begin VB.CheckBox chkEnabled 
+      Caption         =   "&Enabled"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Left            =   1170
+      TabIndex        =   41
+      Tag             =   "E"
+      Top             =   2910
+      Width           =   1050
+   End
+   Begin VB.CheckBox chkChecked 
+      Caption         =   "C&hecked"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Left            =   1170
+      TabIndex        =   40
+      Tag             =   "E"
+      Top             =   3180
+      Width           =   1050
+   End
+   Begin VB.CheckBox chkVisible 
+      Caption         =   "&Visible"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Left            =   2235
+      TabIndex        =   39
+      Tag             =   "E"
+      Top             =   2910
+      Width           =   1800
+   End
+   Begin VB.CheckBox chkCaption 
+      Caption         =   "Alwa&ysShowCaption"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Left            =   2235
+      TabIndex        =   38
+      Tag             =   "E"
+      Top             =   3180
+      Width           =   1800
+   End
+   Begin VB.TextBox txtField 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Index           =   3
+      Left            =   1170
+      TabIndex        =   12
+      Tag             =   "E"
+      Top             =   2190
+      Width           =   2880
+   End
+   Begin VB.TextBox txtField 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Index           =   5
+      Left            =   1170
+      TabIndex        =   10
+      Tag             =   "E"
+      Top             =   1830
+      Width           =   2880
+   End
+   Begin VB.TextBox txtField 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Index           =   1
+      Left            =   1170
+      TabIndex        =   6
+      Tag             =   "E"
+      Top             =   1110
+      Width           =   1320
+   End
+   Begin VB.CommandButton btnAction 
+      Caption         =   "Mover..."
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Index           =   4
+      Left            =   4740
+      Style           =   1  'Graphical
+      TabIndex        =   37
+      Tag             =   "E"
+      ToolTipText     =   "Move Button to specified location"
+      Top             =   150
+      Width           =   1050
+   End
+   Begin VB.CommandButton btnAction 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Index           =   3
+      Left            =   4365
+      Picture         =   "pButtons.pgx":0000
+      Style           =   1  'Graphical
+      TabIndex        =   36
+      Tag             =   "E"
+      ToolTipText     =   "Move Button Right"
+      Top             =   150
+      Width           =   375
+   End
+   Begin VB.CommandButton btnAction 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Index           =   2
+      Left            =   3990
+      Picture         =   "pButtons.pgx":058A
+      Style           =   1  'Graphical
+      TabIndex        =   35
+      Tag             =   "E"
+      ToolTipText     =   "Move Button Left"
+      Top             =   150
+      Width           =   375
+   End
+   Begin VB.CommandButton btnAction 
+      Caption         =   "&Inserir"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Index           =   0
+      Left            =   2565
+      Style           =   1  'Graphical
+      TabIndex        =   33
+      ToolTipText     =   "Add Button"
+      Top             =   150
+      Width           =   1050
+   End
+   Begin VB.CommandButton btnAction 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      Index           =   1
+      Left            =   3615
+      Picture         =   "pButtons.pgx":0B14
+      Style           =   1  'Graphical
+      TabIndex        =   34
+      Tag             =   "E"
+      ToolTipText     =   "Remove Button"
+      Top             =   150
+      Width           =   375
+   End
+   Begin VB.TextBox txtField 
+      Height          =   285
+      Index           =   6
+      Left            =   3270
+      TabIndex        =   16
+      Tag             =   "E"
+      Top             =   2550
+      Width           =   780
+   End
+   Begin VB.Frame Frame4 
+      Caption         =   "Pictu&reDown:"
+      Enabled         =   0   'False
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   825
+      Left            =   4275
+      TabIndex        =   29
+      Tag             =   "E"
+      Top             =   2550
+      Width           =   1515
+      Begin VB.PictureBox picImg 
+         Appearance      =   0  'Flat
+         AutoRedraw      =   -1  'True
+         Enabled         =   0   'False
+         ForeColor       =   &H80000008&
+         Height          =   420
+         Index           =   2
+         Left            =   150
+         ScaleHeight     =   26
+         ScaleMode       =   3  'Pixel
+         ScaleWidth      =   26
+         TabIndex        =   30
+         TabStop         =   0   'False
+         Top             =   300
+         Width           =   420
+      End
+      Begin VB.CommandButton btnBrowse 
+         Height          =   315
+         Index           =   2
+         Left            =   720
+         Picture         =   "pButtons.pgx":109E
+         Style           =   1  'Graphical
+         TabIndex        =   31
+         Tag             =   "E"
+         ToolTipText     =   "Browse Picture"
+         Top             =   405
+         Width           =   330
+      End
+      Begin VB.CommandButton btnClear 
+         Height          =   315
+         Index           =   2
+         Left            =   1050
+         Picture         =   "pButtons.pgx":11E8
+         Style           =   1  'Graphical
+         TabIndex        =   32
+         Tag             =   "E"
+         ToolTipText     =   "Clear Picture"
+         Top             =   405
+         Width           =   330
+      End
+   End
+   Begin VB.Frame Frame3 
+      Caption         =   "PictureO&ver:"
+      Enabled         =   0   'False
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   825
+      Left            =   4275
+      TabIndex        =   25
+      Tag             =   "E"
+      Top             =   1560
+      Width           =   1515
+      Begin VB.PictureBox picImg 
+         Appearance      =   0  'Flat
+         AutoRedraw      =   -1  'True
+         Enabled         =   0   'False
+         ForeColor       =   &H80000008&
+         Height          =   420
+         Index           =   1
+         Left            =   150
+         ScaleHeight     =   26
+         ScaleMode       =   3  'Pixel
+         ScaleWidth      =   26
+         TabIndex        =   26
+         TabStop         =   0   'False
+         Top             =   300
+         Width           =   420
+      End
+      Begin VB.CommandButton btnBrowse 
+         Height          =   315
+         Index           =   1
+         Left            =   720
+         Picture         =   "pButtons.pgx":1332
+         Style           =   1  'Graphical
+         TabIndex        =   27
+         Tag             =   "E"
+         ToolTipText     =   "Browse Picture"
+         Top             =   405
+         Width           =   330
+      End
+      Begin VB.CommandButton btnClear 
+         Height          =   315
+         Index           =   1
+         Left            =   1050
+         Picture         =   "pButtons.pgx":147C
+         Style           =   1  'Graphical
+         TabIndex        =   28
+         Tag             =   "E"
+         ToolTipText     =   "Clear Picture"
+         Top             =   405
+         Width           =   330
+      End
+   End
+   Begin VB.TextBox txtField 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Index           =   4
+      Left            =   1170
+      TabIndex        =   14
+      Tag             =   "E"
+      Top             =   2550
+      Width           =   780
+   End
+   Begin VB.Frame Frame1 
+      Enabled         =   0   'False
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   825
+      Left            =   2580
+      TabIndex        =   17
+      Tag             =   "E"
+      Top             =   630
+      Width           =   1575
+      Begin VB.CheckBox chkUseMask 
+         Caption         =   "&UseMaskColor"
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Left            =   105
+         TabIndex        =   18
+         Tag             =   "E"
+         Top             =   0
+         Width           =   1365
+      End
+      Begin VB.CommandButton cmdBrowse 
+         Caption         =   "..."
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   285
+         Left            =   1155
+         Style           =   1  'Graphical
+         TabIndex        =   20
+         Tag             =   "E"
+         Top             =   375
+         Width           =   285
+      End
+      Begin VB.Label lblHdr 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "C&or"
+         Enabled         =   0   'False
+         BeginProperty Font 
+            Name            =   "Tahoma"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   400
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   195
+         Index           =   5
+         Left            =   255
+         TabIndex        =   19
+         Tag             =   "E"
+         Top             =   390
+         Width           =   255
+      End
+      Begin VB.Shape shpCol 
+         FillColor       =   &H00FF00FF&
+         FillStyle       =   0  'Solid
+         Height          =   285
+         Left            =   585
+         Top             =   375
+         Width           =   555
+      End
+   End
+   Begin VB.Frame Frame2 
+      Caption         =   "&Picture:"
+      Enabled         =   0   'False
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   825
+      Left            =   4275
+      TabIndex        =   21
+      Tag             =   "E"
+      Top             =   630
+      Width           =   1515
+      Begin VB.PictureBox picImg 
+         Appearance      =   0  'Flat
+         AutoRedraw      =   -1  'True
+         Enabled         =   0   'False
+         ForeColor       =   &H80000008&
+         Height          =   420
+         Index           =   0
+         Left            =   150
+         ScaleHeight     =   26
+         ScaleMode       =   3  'Pixel
+         ScaleWidth      =   26
+         TabIndex        =   22
+         TabStop         =   0   'False
+         Top             =   300
+         Width           =   420
+      End
+      Begin VB.CommandButton btnBrowse 
+         Height          =   315
+         Index           =   0
+         Left            =   720
+         Picture         =   "pButtons.pgx":15C6
+         Style           =   1  'Graphical
+         TabIndex        =   23
+         Tag             =   "E"
+         ToolTipText     =   "Browse Picture"
+         Top             =   405
+         Width           =   330
+      End
+      Begin VB.CommandButton btnClear 
+         Height          =   315
+         Index           =   0
+         Left            =   1050
+         Picture         =   "pButtons.pgx":1710
+         Style           =   1  'Graphical
+         TabIndex        =   24
+         Tag             =   "E"
+         ToolTipText     =   "Clear Picture"
+         Top             =   405
+         Width           =   330
+      End
+   End
+   Begin VB.ComboBox cboStyle 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   315
+      ItemData        =   "pButtons.pgx":185A
+      Left            =   1170
+      List            =   "pButtons.pgx":1867
+      Style           =   2  'Dropdown List
+      TabIndex        =   4
+      Tag             =   "E"
+      Top             =   720
+      Width           =   1320
+   End
+   Begin VB.TextBox txtField 
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Index           =   2
+      Left            =   1170
+      TabIndex        =   8
+      Tag             =   "E"
+      Top             =   1470
+      Width           =   1320
+   End
+   Begin VB.HScrollBar hsbIDX 
+      Height          =   285
+      Left            =   1890
+      Max             =   1
+      Min             =   1
+      TabIndex        =   2
+      TabStop         =   0   'False
+      Tag             =   "E"
+      Top             =   165
+      Value           =   1
+      Width           =   390
+   End
+   Begin VB.TextBox txtField 
+      BackColor       =   &H80000014&
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   285
+      Index           =   0
+      Left            =   1170
+      Locked          =   -1  'True
+      TabIndex        =   1
+      TabStop         =   0   'False
+      Tag             =   "E"
+      Top             =   165
+      Width           =   690
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Description:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   7
+      Left            =   270
+      TabIndex        =   9
+      Tag             =   "E"
+      Top             =   1875
+      Width           =   855
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Key:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   2
+      Left            =   795
+      TabIndex        =   5
+      Tag             =   "E"
+      Top             =   1155
+      Width           =   330
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&GroupID:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   8
+      Left            =   2550
+      TabIndex        =   15
+      Tag             =   "E"
+      Top             =   2595
+      Width           =   660
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Width:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   6
+      Left            =   645
+      TabIndex        =   13
+      Tag             =   "E"
+      Top             =   2595
+      Width           =   480
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&ToolTipText:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   4
+      Left            =   225
+      TabIndex        =   11
+      Tag             =   "E"
+      Top             =   2235
+      Width           =   900
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Caption:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   3
+      Left            =   510
+      TabIndex        =   7
+      Tag             =   "E"
+      Top             =   1515
+      Width           =   615
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "&Style:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   1
+      Left            =   705
+      TabIndex        =   3
+      Tag             =   "E"
+      Top             =   780
+      Width           =   420
+   End
+   Begin VB.Label lblHdr 
+      Alignment       =   1  'Right Justify
+      Appearance      =   0  'Flat
+      AutoSize        =   -1  'True
+      BackColor       =   &H80000010&
+      BackStyle       =   0  'Transparent
+      Caption         =   "Inde&x:"
+      BeginProperty Font 
+         Name            =   "Tahoma"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   195
+      Index           =   0
+      Left            =   645
+      TabIndex        =   0
+      Top             =   210
+      Width           =   480
+   End
+End
+Attribute VB_Name = "ppgTBButtons"
+Attribute VB_GlobalNameSpace = False
+Attribute VB_Creatable = True
+Attribute VB_PredeclaredId = False
+Attribute VB_Exposed = True
+Option Explicit
+DefInt A-Z
+
+Dim TB As ideToolbar
+Dim LastBtn
+
+Private Sub btnAction_Click(Index As Integer)
+  Dim I, Z, X
+  Dim M$
+  Z = hsbIDX
+  Select Case Index
+  Case 0: GoSub AddButton
+  Case 1: GoSub DelButton
+  Case 2: GoSub MoveLeft
+  Case 3: GoSub MoveRight
+  Case 4: GoSub MoveX
+  End Select
+  Exit Sub
+
+AddButton:
+  If Changed Then PropertyPage_ApplyChanges
+  I = TB.AddButton()
+  If I Then
+    hsbIDX.Max = I
+    If Z = hsbIDX.Max Then
+      hsbIDX = I
+    Else
+      TB.SwapButton I, Z + 1
+      hsbIDX = Z + 1
+    End If
+  Else
+    MsgBox "Unable to add button", vbCritical
+  End If
+  Changed = -1
+  Return
+
+DelButton:
+  Changed = 0
+  I = TB.DeleteButton(Z)
+  hsbIDX.Max = I
+  If I Then
+    If TB.ButtonCount = 0 Then
+      SetTagControls
+    Else
+      hsbIDX.Max = I
+      If Z >= I Then
+        hsbIDX = I
+      Else
+        hsbIDX = Z
+      End If
+      hsbIDX_Change
+      Changed = -1
+    End If
+  ElseIf I = -1 Then
+    MsgBox "Unable to delete button", vbCritical
+  End If
+  Return
+
+MoveLeft:
+  I = hsbIDX
+  If I > 1 Then
+    PropertyPage_ApplyChanges
+    Z = TB.SwapButton(I, I - 1)
+    If Z Then LastBtn = Z: hsbIDX = Z
+    Changed = -1
+  Else
+    MsgBox "Button cannot be moved any further left.", 48
+  End If
+  Return
+
+MoveRight:
+  I = hsbIDX
+  If I < TB.ButtonCount Then
+    PropertyPage_ApplyChanges
+    Z = TB.SwapButton(I, I + 1)
+    If Z Then LastBtn = Z: hsbIDX = Z
+    Changed = -1
+  Else
+    MsgBox "Button cannot be moved any further right.", 48
+  End If
+  Return
+
+MoveX:
+  Z = hsbIDX.Max
+  X = hsbIDX
+  M$ = InputBox$("Swap button " & X & " with which index?" & Chr$(10) & Chr$(10) & "Plese select a position between 1 and " & Z, "Swap Button")
+  If M$ <> "" Then
+    I = Val(M$)
+    If I < 1 Or I > Z Then
+      MsgBox "Value entered out of range.", vbExclamation
+    Else
+      PropertyPage_ApplyChanges
+      Z = TB.SwapButton(hsbIDX, I)
+      If Z Then LastBtn = Z: hsbIDX = Z
+      Changed = -1
+    End If
+  End If
+  Return
+End Sub
+
+Private Sub btnBrowse_Click(Index As Integer)
+  Dim F$
+  F$ = SelectFile$(hwnd, "Browse Picture", "Pictures (*.bmp;*.dib;*.gif;*.ico;*.jpg;*.rle)|*.bmp;*.dib;*.gif;*.ico;*.jpg;*.rle|All Files (*.*)|*.*", 0, "", "", "BMP", fdmOpenFile)
+  If F$ <> "" Then
+    On Error Resume Next
+    picImg(Index).BackColor = shpCol.FillColor
+    picImg(Index).Picture = LoadPicture(F$)
+    picImg(Index).Picture = picImg(Index).Image
+    If txtField(3) = "" Then txtField(3) = RemoveExtension$(GetFile$(F$))
+    If txtField(1) = "" Then txtField(1) = RemoveExtension$(GetFile$(F$))
+    Changed = -1
+    If Err Then MsgBox Error$, vbExclamation
+    On Error GoTo 0
+  End If
+End Sub
+
+Private Sub btnClear_Click(Index As Integer)
+  Set picImg(Index).Picture = Nothing
+  Changed = -1
+End Sub
+
+
+Private Sub cboStyle_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkCaption_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkChecked_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkEnabled_Click()
+  Changed = -1
+End Sub
+
+
+Private Sub chkUseMask_Click()
+  Changed = -1
+End Sub
+
+Private Sub chkVisible_Click()
+  Changed = -1
+End Sub
+
+Private Sub cmdBrowse_Click()
+  Dim C As Long
+  C = SelectColor(hwnd, shpCol.FillColor, 0)
+  If C <> -1 Then
+    shpCol.FillColor = C
+    picImg(0).BackColor = C
+    picImg(1).BackColor = C
+    picImg(2).BackColor = C
+    Changed = -1
+  End If
+End Sub
+
+
+Private Sub hsbIDX_Change()
+  Dim I
+  Dim L As Boolean, R As Boolean
+  Pointer 11
+  I = hsbIDX
+  If I <> LastBtn And Changed = -1 Then PropertyPage_ApplyChanges
+  LastBtn = I
+  With TB
+    txtField(0) = I
+    If .ButtonCount >= I Then
+      SetTagControls , -1
+      If I = 1 Then L = 0 Else L = -1
+      If I = .ButtonCount Then R = 0 Else R = -1
+      btnAction(2).Enabled = L
+      btnAction(3).Enabled = R
+      cboStyle.ListIndex = .ButtonStyle(I)
+      txtField(1) = .ButtonKey(I)
+      txtField(2) = .ButtonCaption(I)
+      txtField(3) = .ButtonToolTipText(I)
+      txtField(4) = .ButtonPlaceholderWidth(I)
+      txtField(5) = .ButtonDescription(I)
+      txtField(6) = .ButtonGroupID(I)
+      chkEnabled = Abs(.ButtonEnabled(I))
+      chkChecked = Abs(.ButtonChecked(I))
+      chkUseMask = Abs(.ButtonUseMaskColor(I))
+      chkVisible = Abs(.ButtonVisible(I))
+      chkCaption = Abs(.ButtonAlwaysShowCaption(I))
+      shpCol.FillColor = .ButtonMaskColor(I)
+      Set picImg(0).Picture = .ButtonPicture(I)
+      Set picImg(1).Picture = .ButtonPictureOver(I)
+      Set picImg(2).Picture = .ButtonPictureDown(I)
+      Changed = 0
+    Else
+      MsgBox "Button index '" & I & "' not found.", vbCritical
+      SetTagControls
+    End If
+  End With
+  Pointer 0
+End Sub
+
+Private Sub hsbIDX_Scroll()
+  hsbIDX_Change
+End Sub
+
+
+Private Sub PropertyPage_ApplyChanges()
+  Dim I
+  With TB
+    I = LastBtn
+    If I <= .ButtonCount Then
+      .Redraw = 0
+      .ButtonStyle(I) = cboStyle.ListIndex
+      .ButtonKey(I) = txtField(1)
+      .ButtonCaption(I) = txtField(2)
+      .ButtonToolTipText(I) = txtField(3)
+      .ButtonPlaceholderWidth(I) = Val(txtField(4))
+      .ButtonDescription(I) = txtField(5)
+      .ButtonGroupID(I) = txtField(6)
+      .ButtonEnabled(I) = chkEnabled
+      .ButtonChecked(I) = chkChecked
+      .ButtonAlwaysShowCaption(I) = chkCaption
+      .ButtonUseMaskColor(I) = chkUseMask
+      .ButtonVisible(I) = chkVisible
+      .ButtonMaskColor(I) = shpCol.FillColor
+      Set .ButtonPicture(I) = picImg(0).Picture
+      Set .ButtonPictureOver(I) = picImg(1).Picture
+      Set .ButtonPictureDown(I) = picImg(2).Picture
+      .Redraw = -1
+      .Refresh
+    End If
+  End With
+End Sub
+
+Private Sub PropertyPage_SelectionChanged()
+  If TypeOf SelectedControls(0) Is ideToolbar Then
+    If TB Is Nothing Then
+      GoSub LoadProperties
+    ElseIf TB.hwnd <> SelectedControls(0).hwnd Then
+      GoSub LoadProperties
+    End If
+  End If
+  Exit Sub
+
+LoadProperties:
+  Set TB = SelectedControls(0)
+  If TB.ButtonCount Then
+    hsbIDX.Max = TB.ButtonCount
+    hsbIDX_Change
+  Else
+    SetTagControls
+  End If
+  Changed = 0
+  Return
+End Sub
+
+
+Private Sub SetTagControls(Optional T$ = "E", Optional V As Boolean = 0)
+  Dim C As Control
+  On Error Resume Next
+  For Each C In Controls
+    If C.Tag = T$ Then C.Enabled = V
+  Next
+  On Error GoTo 0
+End Sub
+
+Private Sub txtField_Change(Index As Integer)
+  If Index <> 0 Then Changed = -1
+End Sub
+
+
+Private Sub txtField_GotFocus(Index As Integer)
+  Highlight txtField(Index)
+End Sub
+
+
+Private Sub txtField_KeyPress(Index As Integer, KeyAscii As Integer)
+  Dim C$
+  If Index = 4 Or Index = 6 Then
+    C$ = Chr$(KeyAscii)
+    If C$ < "0" Or C$ > "9" Then
+      If KeyAscii <> 8 Then Beep: KeyAscii = 0
+    End If
+  End If
+End Sub
+
+
