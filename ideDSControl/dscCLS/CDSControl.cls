@@ -15,6 +15,7 @@ Option Explicit
 ' TODO: Declare local ADO Recordset object. For example:
 Private WithEvents mRsADO As ADODB.Recordset
 Attribute mRsADO.VB_VarHelpID = -1
+Private mRsFieldClone As ADODB.Recordset
 
 Private msParentEXEName As String
 
@@ -33,7 +34,12 @@ Public Event DepoisUpdate(eOperacao As eDSOperacao)
 Public Event AntesRequery(Cancel As Boolean)
 Public Event DepoisRequery()
 
+Public Event RecordDeleted()
+
+Private mbDisableRaiseEventFieldChange As Boolean 'quando ativado não irá enviar o evento FieldChangeComplete
+
 Public Sub DesConectar()
+    Debug.Print ("Insignia_DSControl.CDSControl.DesConectar")
   On Error Resume Next
   
   If Not mRsADO Is Nothing Then
@@ -46,6 +52,7 @@ Public Sub DesConectar()
 End Sub
 
 Friend Sub Class_GetDataMember(DataMember As String, Data As Object)
+    Debug.Print ("Insignia_DSControl.CDSControl.Class_GetDataMember")
   ' TODO:  Return the appropriate recordset based on DataMember. For example:
 
   If mbFlagRequery Then Exit Sub
@@ -58,20 +65,34 @@ Friend Sub Class_GetDataMember(DataMember As String, Data As Object)
   End Select
 End Sub
 
+Private Sub Class_Initialize()
+    Debug.Print ("Insignia_DSControl.CDSControl.Class_Initialize")
+
+End Sub
+
+Private Sub Class_Terminate()
+    Debug.Print ("Insignia_DSControl.CDSControl.Class_Terminate")
+
+End Sub
+
 Private Sub mRsADO_FieldChangeComplete(ByVal cFields As Long, ByVal Fields As Variant, ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
+    Debug.Print ("Insignia_DSControl.CDSControl.mRsADO_FieldChangeComplete")
  ' verifica dados invalidos inseridos pelo usuario
  ' este evento e disparado quando o foco deixa o controle que esta sendo editado
  ' é chamado novamente depois do metodo update ser invocado
-  RaiseEvent FieldChangeComplete(cFields, Fields, pError, adStatus, pRecordset)
+ If mbDisableRaiseEventFieldChange Then Exit Sub
+ 
+ RaiseEvent FieldChangeComplete(cFields, Fields, pError, adStatus, pRecordset)
 End Sub
 
 Private Sub mRsADO_MoveComplete(ByVal adReason As ADODB.EventReasonEnum, ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
+    Debug.Print ("Insignia_DSControl.CDSControl.mRsADO_MoveComplete")
   Static bDisparado As Boolean
   
   'Esta passando duas vezes qdo usa o controle xdsmaster
   If Not bDisparado And meOperacao = opVisualizacao Then
     bDisparado = True
-    RaiseEvent MoveComplete(adReason, pError, adStatus, pRecordset)
+    If Not IsRecordDeleted Then RaiseEvent MoveComplete(adReason, pError, adStatus, pRecordset)
     bDisparado = False
   End If
 
@@ -100,6 +121,7 @@ Public Function Conectar(ByVal Source As String, _
                          Optional ByVal pCursorLocation As CursorLocationEnum = adUseClient, _
                          Optional ByVal pCursorType As CursorTypeEnum = adOpenKeyset, _
                          Optional ByVal pLockType As LockTypeEnum = adLockPessimistic) As eDSConexao
+    Debug.Print ("Insignia_DSControl.CDSControl.Conectar")
   
   On Error GoTo ErrHandle
   
@@ -116,7 +138,7 @@ Public Function Conectar(ByVal Source As String, _
   End If
   
   With mRsADO
-    .CursorLocation = pCursorLocation
+    .cursorLocation = pCursorLocation
     .Open Source, ActiveConnection, pCursorType, pLockType
     
     If .RecordCount = 0 Then
@@ -146,12 +168,14 @@ Public Property Get AbsolutePosition() As Long
   On Error GoTo 0
 End Property
 Public Property Let AbsolutePosition(vNewValue As Long)
+    Debug.Print ("Insignia_DSControl.CDSControl.Property Let AbsolutePosition")
   On Error Resume Next
   mRsADO.AbsolutePosition = vNewValue
   On Error GoTo 0
 End Property
 
 Public Sub AddNew(Optional ByVal FieldList, Optional ByVal Values)
+    Debug.Print ("Insignia_DSControl.CDSControl.AddNew")
   On Error GoTo AddErr
   
   If meOperacao = opVisualizacao Then
@@ -164,49 +188,68 @@ Public Sub AddNew(Optional ByVal FieldList, Optional ByVal Values)
     Else
       mRsADO.AddNew
     End If
+    
     Operacao = opInclusao
   End If
   
   Exit Sub
 AddErr:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 End Sub
 
-Public Sub Delete(Optional ByVal ShowMessage As Boolean = True)
+Public Function Delete(Optional ByVal ShowMessage As Boolean = True) As Boolean
+    Debug.Print ("Insignia_DSControl.CDSControl.Delete")
   
   If ShowMessage Then _
-      If MsgBox("O registro será excluído definitivamente." & _
-                vbCrLf & "Deseja Continua ?", _
+      If MsgBox("O registro será EXCLUÍDO definitivamente." & _
+                vbCrLf & vbCrLf & "Deseja Continua ?", _
                 vbYesNo + vbExclamation, _
-                "Confirma Exclusão") <> vbYes Then Exit Sub
+                "Confirma Exclusão") <> vbYes Then Exit Function
   
+  Dim nTentativas As Integer
+GoInicio:
+  Err.Clear
   
   On Error Resume Next
-  mRsADO.Delete
+  mRsADO.Delete adAffectCurrent
     
+  If Err.Number <> 0 And nTentativas < 2 Then
+    nTentativas = nTentativas + 1
+    mRsADO.CancelUpdate
+    Me.Resync nTentativas < 2
+    GoTo GoInicio
+  End If
+  
   Select Case Err.Number
     Case 0: 'exclusao foi um sucesso
       Call MoveNext
-    
+      Delete = True
+      
     Case -2147217864
-      MsgBox "Esta linha já foi excluída por outro usuário!", vbInformation
-      mRsADO.CancelUpdate
+    Case -2147217885
+'      MsgBox "Este registros foi excluído ou marcado para exclusão por outro usuário!", vbInformation
+'      mRsADO.CancelUpdate
+'    Call MoveNext
+'    Delete = True
+      Me.Operacao = opVisualizacao
+      RaiseEvent RecordDeleted
     
     Case -2147467259
-      MsgBox "As alterações feitas não podem ser salvas no momento." _
+      MsgBox "As alterações realizadas não podem ser gravadas no momento." _
              & "O registro encontra-se bloqueado por outro usuário." _
              & vbCrLf & "Você pode cancelar as alterações ou tentar salvar mais tarde...", _
              vbExclamation, "Erro de gravação"
-      Exit Sub
+      Exit Function
     Case Else
-      MsgBox "O registro não pode ser excluído." + vbCrLf + Err.Description
+      MsgBox "O registro não pode ser excluído." + vbCrLf + vbCrLf + Err.Description
       mRsADO.CancelUpdate
   End Select
   On Error GoTo 0
-End Sub
+End Function
 
 Public Sub Requery(Optional ByVal Options As Long = -1)
-  Dim i As Integer
+    Debug.Print ("Insignia_DSControl.CDSControl.Requery")
+  Dim nPos As Long
   
   On Error GoTo RefreshErr
 
@@ -217,7 +260,11 @@ Public Sub Requery(Optional ByVal Options As Long = -1)
   mbFlagRequery = True
   
   Screen.MousePointer = vbHourglass
-  mRsADO.Requery Options
+  With mRsADO
+    nPos = .AbsolutePosition
+    .Requery Options
+    .AbsolutePosition = nPos
+  End With
   Screen.MousePointer = vbDefault
   
   mbFlagRequery = False
@@ -233,13 +280,15 @@ Public Sub Requery(Optional ByVal Options As Long = -1)
 RefreshErr:
   mbFlagRequery = False
   Screen.MousePointer = vbDefault
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 End Sub
 
 Public Function Update() As Boolean
+    Debug.Print ("Insignia_DSControl.CDSControl.Update")
   Dim bResult As Boolean
   Dim eOpRetorno As eDSOperacao
-  Dim bEditAdd As Boolean, nError As Long
+  Dim bEditAdd As Boolean
+  Dim vErr As MFuncoes.tpError
   
   mbCancelEvent = False
   eOpRetorno = meOperacao
@@ -265,10 +314,10 @@ Public Function Update() As Boolean
   
     'Caso tenha ocorrido o erro à cima então
     'armazena o numero do erro(O objeto error sera resetado pela proxima linha)
-    nError = Err.Number
+    vErr = MFuncoes.CopyErrObject
     
     On Error GoTo TrataErro
-    Select Case nError
+    Select Case vErr.Number
       Case 0:
         If .ActiveConnection.Errors.Count = 0 Then 'nao ocorreu nenhum erro
           If bEditAdd Then
@@ -278,7 +327,10 @@ Public Function Update() As Boolean
           
           Me.Operacao = opVisualizacao
           bResult = True
-          
+          If Not mRsFieldClone Is Nothing Then
+            If mRsFieldClone.State = adStateOpen Then mRsFieldClone.Close
+            Set mRsFieldClone = Nothing
+          End If
         Else
           Dim oError As Error, sErros As String
           
@@ -300,10 +352,10 @@ Public Function Update() As Boolean
         End If
         
       Case 3640 + vbObjectError 'registro alterado por outro usuario
-        If MsgBox("Outro usuário alterou ester registro deste de que você começou a edição." _
-                  & vbCr & "Se salvar o registro vai sobrescrever as alterações feitas pelo outro usuário." _
-                  & vbCr & vbCr & "Você quer sobrescrever as alterações do outro usuário?" _
-                  , vbExclamation + vbYesNoCancel, "Conflito na Gravação") = vbYes Then
+        If MsgBox("Este registro foi alterado enquanto você realizava sua alteração." _
+                  & vbCr & vbCr & "Se continuar você irá sobrescrever as alterações do outro usuário." _
+                  & vbCr & vbCr & "Deseja sobrescrever as alterações do outro usuário?" _
+                  , vbExclamation + vbYesNoCancel, "Conflito na Informações") = vbYes Then
           'forca uma sobrescrita dos dados devemos armazenar os dados em um buffer
           ReDim vFieldArray(.Fields.Count - 1)
           For X = 0 To .Fields.Count - 1
@@ -311,15 +363,16 @@ Public Function Update() As Boolean
           Next
               
           .CancelUpdate
-          Me.Resync
-             
-          For X = 0 To .Fields.Count - 1 'salva as alteracoes no banco de dados
-            If .Fields(X).Value <> vFieldArray(X) Then .Fields(X) = vFieldArray(X)
-          Next
-              
-          .Update
+          If Me.Resync Then
+            For X = 0 To .Fields.Count - 1 'salva as alteracoes no banco de dados
+              If .Fields(X).Value <> vFieldArray(X) Then .Fields(X) = vFieldArray(X)
+            Next
+                
+            .Update
+            
+          End If
           Me.Operacao = opVisualizacao
-          
+                    
         Else 'usuario escolheu nao sobrescrever os dados
           .CancelUpdate
           Me.Resync
@@ -327,33 +380,48 @@ Public Function Update() As Boolean
         End If
         
       Case -2147467259
-        MsgBox "As alterações feitas não podem ser salvas no momento. " _
-               & vbCr & "O registro encontra-se bloqueado pelo por outro usuário." _
+        If MFuncoes.IsDebug Then
+          MsgBox "Number: " & vbTab & vErr.Number & vbCrLf _
+               & "Description: " & vbTab & vErr.Description & vbCrLf _
+               , vbError, "Origem: CDSControl.Update"
+        Else
+        MsgBox "Suas alterações não podem ser gravadas no momento! " & vbCrLf _
+               & vbCr & "O registro encontra-se bloqueado por outro usuário." _
                & vbCr & "Você pode cancelar as alterações ou tentar salvar mais tarde...", vbExclamation, "Erro de gravação"
+        End If
         Exit Function
       Case Else:
-        MsgBox Err.Description + vbCr & "(Origem: CDSControl.Update)", vbExclamation, "Erro"
+        MsgBox "Erro: " & vbTab & vErr.Number & vbCrLf _
+               & "Descrição: " & vbTab & vErr.Description & vbCrLf _
+               & "Origem: CDSControl.Update", vbError, AppName
         Me.Operacao = opVisualizacao
     End Select
   End With
   
-  RaiseEvent DepoisUpdate(eOpRetorno)
+  If bResult Then RaiseEvent DepoisUpdate(eOpRetorno)
     
   Update = bResult
   Exit Function
     
 TrataErro:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 End Function
 
 Public Sub Cancel()
+    Debug.Print ("Insignia_DSControl.CDSControl.Cancel")
   mbCancelEvent = False
   RaiseEvent AntesCancel(mbCancelEvent)
   If mbCancelEvent = True Then Exit Sub
   
   On Error GoTo ErrCancel
   With mRsADO
-    If Not .EOF And Not .BOF Then .CancelUpdate
+    
+    If Not .EOF And Not .BOF Then
+      .CancelUpdate
+'      .Resync    ''' Deixou cadastros maiores muito lento
+      ReValueFields
+      
+    End If
 '    If .EditMode = adEditAdd And (Not .EOF And Not .BOF) Then .MoveLast
   End With
 
@@ -361,10 +429,11 @@ Public Sub Cancel()
   Exit Sub
   
 ErrCancel:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 End Sub
 
 Public Sub MoveFirst()
+    Debug.Print ("Insignia_DSControl.CDSControl.MoveFirst")
   On Error GoTo TrataErro:
   If mRsADO.RecordCount > 0 Then mRsADO.MoveFirst
   Exit Sub
@@ -374,6 +443,7 @@ TrataErro:
 End Sub
 
 Public Sub MoveLast()
+    Debug.Print ("Insignia_DSControl.CDSControl.MoveLast")
   On Error GoTo TrataErro
   mRsADO.MoveLast
   Exit Sub
@@ -382,6 +452,7 @@ TrataErro:
 End Sub
 
 Public Sub MoveNext()
+    Debug.Print ("Insignia_DSControl.CDSControl.MoveNext")
   On Error GoTo GoNextError
   If Not mRsADO.EOF And mRsADO.RecordCount > 0 Then mRsADO.MoveNext
   If mRsADO.EOF And mRsADO.RecordCount > 0 Then
@@ -396,6 +467,7 @@ GoNextError:
 End Sub
 
 Public Sub MovePrevious()
+    Debug.Print ("Insignia_DSControl.CDSControl.MovePrevious")
   On Error GoTo TrataErro
   If Not mRsADO.BOF Then mRsADO.MovePrevious
   If mRsADO.BOF And mRsADO.RecordCount > 0 Then
@@ -410,6 +482,7 @@ TrataErro:
 End Sub
 
 Public Sub AutoSearch(DataField As String, Texto As String, KeyAscii As Integer)
+    Debug.Print ("Insignia_DSControl.CDSControl.AutoSearch")
   Dim sSearch As String, sTexto As String
   Dim nPos As Long
   
@@ -444,6 +517,7 @@ Public Sub AutoSearch(DataField As String, Texto As String, KeyAscii As Integer)
 End Sub
 
 Public Sub Search(ByVal DataField As String, ByVal Texto As String)
+    Debug.Print ("Insignia_DSControl.CDSControl.Search")
   Dim sTexto      As String
   Dim sCriterio   As String
   
@@ -545,7 +619,7 @@ Public Sub Search(ByVal DataField As String, ByVal Texto As String)
   Exit Sub
   
 TrataErro:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 
   On Error Resume Next
   RSConsulta.Close
@@ -558,16 +632,17 @@ Public Property Get Filter() As Variant
   Filter = mRsADO.Filter
   Exit Property
 ErrRaise:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 
 End Property
 
 Public Property Let Filter(ByVal sFilter As Variant)
+    Debug.Print ("Insignia_DSControl.CDSControl.Property Let Filter")
   On Error GoTo ErrRaise
   mRsADO.Filter = sFilter
   Exit Property
 ErrRaise:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 End Property
 
 Public Property Get Field(Index) As ADODB.Field
@@ -580,6 +655,7 @@ End Property
 
 Public Sub Find(Criterio As String, Optional SkipRecords As Long, _
                 Optional SearchDirection As SearchDirectionEnum = adSearchForward, Optional Start)
+    Debug.Print ("Insignia_DSControl.CDSControl.Find")
   On Error GoTo TrataErro
   mRsADO.Find Criterio, SkipRecords, SearchDirection, Start
   Exit Sub
@@ -587,15 +663,22 @@ TrataErro:
   Call MFuncoes.ErrRaise
 End Sub
 
-Public Sub SeekValue(KeyValues, Optional SeekOption As SeekEnum = adSeekFirstEQ)
+Public Sub SeekValue(ByVal pIndexName As String, KeyValues, Optional SeekOption As SeekEnum = adSeekFirstEQ)
+    Debug.Print ("Insignia_DSControl.CDSControl.SeekValue")
   On Error GoTo ErrRaise
-  mRsADO.Seek KeyValues, SeekOption
+  If (mRsADO.Supports(adIndex) And mRsADO.Supports(adSeek)) Then
+      mRsADO.Index = pIndexName
+      mRsADO.Seek KeyValues, SeekOption
+  Else
+    MsgBox "Provedor não suporte para função [Seek]", App.CompanyName
+  End If
   Exit Sub
 ErrRaise:
-  Call ErrRaise
+  Call MFuncoes.ErrRaise
 End Sub
 
 Public Property Let Sort(ByVal sField As String)
+    Debug.Print ("Insignia_DSControl.CDSControl.Property Let Sort")
   On Error GoTo TrataErro
   mRsADO.Sort = sField
   Exit Property
@@ -609,7 +692,7 @@ TrataErro:
            "Consulte o Administrador de Sistema e o informe sobre o erro!", vbInformation, Me.AppName
     Err.Clear
   Else
-    Call ErrRaise
+    Call MFuncoes.ErrRaise
   End If
 End Property
 
@@ -624,6 +707,7 @@ Public Property Get AppName() As String
   AppName = msParentEXEName
 End Property
 Public Property Let AppName(ByVal sEXEName As String)
+    Debug.Print ("Insignia_DSControl.CDSControl.Property Let AppName")
   msParentEXEName = sEXEName
 End Property
 
@@ -631,11 +715,13 @@ Public Property Get Operacao() As eDSOperacao
   Operacao = meOperacao
 End Property
 Public Property Let Operacao(ByVal vNewValue As eDSOperacao)
+    Debug.Print ("Insignia_DSControl.CDSControl.Property Let Operacao")
   RaiseEvent Operacao(vNewValue, meOperacao)
   meOperacao = vNewValue
 End Property
 
 Public Function OperacaoPendente() As Boolean
+    Debug.Print ("Insignia_DSControl.CDSControl.OperacaoPendente")
   Dim sCap As String
   
   If gsParent = "" Then
@@ -652,11 +738,89 @@ Public Function OperacaoPendente() As Boolean
   End If
 End Function
 
-Friend Sub Resync()
+Friend Function Resync(Optional hideError As Boolean = False) As Boolean
+  Debug.Print ("Insignia_DSControl.CDSControl.Resync")
   'Atualiza o Registro Atual funciona apenas em tabelas com chave primaria
-  On Error Resume Next
-  If mRsADO.Supports(adResync) Then mRsADO.Resync adAffectCurrent
-  On Error GoTo 0
+'  On Error Resume Next
+'  If mRsADO.Supports(adResync) Then mRsADO.Resync adAffectCurrent
+'  On Error GoTo 0
+  
+  On Error GoTo Finaliza
+    DoEvents
+    If mRsADO.Supports(adResync) Then mRsADO.Resync adAffectCurrent
+    Resync = True
+    
+Finaliza:
+    If hideError = False And Err.Number <> 0 Then
+      If Err.Number = -2147217885 Or Err.Number = -2147217864 Then
+        MsgBox "Este registro foi excluído ou marcado para exclusão por outro usuário!" & vbCrLf & vbCrLf & _
+               "Por favor, abra novamente essa tela para atualizar seus dados", vbCritical
+        
+        Me.Operacao = opVisualizacao
+        RaiseEvent RecordDeleted
+      Else
+        MsgBox "Error " & Err.Number & " (" & Err.Description & ") in procedure Resync of Módulo de classe CDSControl", vbCritical
+      End If
+    End If
+End Function
 
+Friend Sub CloneRegFields()
+    Debug.Print ("Insignia_DSControl.CDSControl.CloneRegFields")
+  Dim fld As ADODB.Field
+
+  Set mRsFieldClone = New ADODB.Recordset
+    
+  'Cria a estrutura dos campos
+  For Each fld In mRsADO.Fields
+    If Not fld.Properties("ISAUTOINCREMENT") Then
+      mRsFieldClone.Fields.Append fld.Name, fld.Type, fld.DefinedSize, fld.Attributes
+      If fld.Precision > 0 Then
+          mRsFieldClone.Fields(fld.Name).Precision = fld.Precision
+      End If
+      If fld.NumericScale > 0 Then
+          mRsFieldClone.Fields(fld.Name).NumericScale = fld.NumericScale
+      End If
+    End If
+  Next
+  
+  'Adiciona os valores
+  mRsFieldClone.cursorLocation = adUseServer
+  mRsFieldClone.Open , , adOpenKeyset
+  mRsFieldClone.AddNew
+  
+  For Each fld In mRsADO.Fields
+    If Not fld.Properties("ISAUTOINCREMENT") Then
+      mRsFieldClone.Fields(fld.Name).Value = fld.Value
+    End If
+  Next
+  
 End Sub
 
+'Volta os valores originais após cancelar edição
+Friend Sub ReValueFields()
+    Debug.Print ("Insignia_DSControl.CDSControl.ReValueFields")
+  Dim fld As ADODB.Field
+  
+  If mRsFieldClone Is Nothing Or mRsADO Is Nothing Then Exit Sub
+  
+  mbDisableRaiseEventFieldChange = True
+  For Each fld In mRsFieldClone.Fields
+    mRsADO.Fields(fld.Name).Value = fld.Value
+  Next
+  mbDisableRaiseEventFieldChange = False
+  
+  mRsFieldClone.Close
+  Set mRsFieldClone = Nothing
+  
+  Me.Resync
+End Sub
+
+Public Function IsRecordDeleted()
+On Error Resume Next
+  Dim book As Double
+  book = mRsADO.bookmark
+  IsRecordDeleted = (Err.Number = -2147217885 Or Err.Number = -2147217864)
+  
+  Err.Clear
+On Error GoTo 0
+End Function

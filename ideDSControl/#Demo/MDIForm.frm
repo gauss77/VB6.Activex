@@ -38,7 +38,7 @@ Begin VB.MDIForm MDIForm1
          Width           =   1650
       End
       Begin VB.CommandButton Command4 
-         Caption         =   "Instancia Objeto"
+         Caption         =   "Carregar Tabela"
          Height          =   435
          Left            =   75
          TabIndex        =   3

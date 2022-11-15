@@ -654,6 +654,8 @@ Public Event ClickImprimir()
 Public Event ClickPesquisa(Cancel As Boolean)
 Public Event ClickButtonsCreate(ByVal ButtonKey As String)
 
+Public Event RecordDeleted()
+
 Public Sub About()
 Attribute About.VB_Description = "Sobre: Heliomar P. Marques \r\ncontato: heliomarpm@hotmail.com"
 Attribute About.VB_UserMemId = -552
@@ -713,6 +715,10 @@ Private Sub chkContinuarInsert_Click()
     Call AddNewContinue
 End Sub
 
+Private Sub mDS_RecordDeleted()
+  RaiseEvent RecordDeleted
+End Sub
+
 Private Sub UserControl_InitProperties()
     Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_InitProperties")
     meOperacao = opVisualizacao
@@ -754,6 +760,30 @@ Public Sub DesConectar()
         mDS.DesConectar
         Set mDS = Nothing
     End If
+End Sub
+
+Public Sub ReConectar()
+  Debug.Print ("Insignia_DSControl.ideDSControl.DesConectar")
+
+  If IsConnected Then
+    Dim sql As String
+    Dim actConnection As Variant
+    Dim cursorLocation As CursorLocationEnum
+    Dim cursorType As CursorTypeEnum
+    Dim lockType As LockTypeEnum
+
+    With mDS.RS
+      sql = .Source
+      actConnection = .ActiveConnection
+      cursorLocation = .cursorLocation
+      cursorType = .cursorType
+      lockType = .lockType
+    End With
+    mDS.DesConectar
+    Set mDS = Nothing
+
+    Call Conectar(sql, actConnection, cursorLocation, cursorType, lockType)
+  End If
 End Sub
 
 Public Function Conectar(ByVal Source As String, _
@@ -810,11 +840,10 @@ Private Sub ButtonsFuncEnabled(bEnabled As Boolean)
       
     Case Is = 5 'ORDERBY
       Combos(cCmbOrder).Enabled = bEnabled And Combos(cCmbOrder).ListCount > 0
-      abtBarra1(5).Enabled = Combos(cCmbOrder).Enabled
+      btn.Enabled = Combos(cCmbOrder).Enabled
     End Select
     
   Next
-    
   
   'Se estiver mandando habilitar botoes entao deve
   'verificar se é permitido utiliza-lós
@@ -1278,7 +1307,15 @@ Public Sub Delete()
   mbCancelEvent = False
   RaiseEvent AntesDelete(mbCancelEvent, bNotMessage)
   If Not mbCancelEvent Then
-    If meOperacao = opVisualizacao Then mDS.Delete Not bNotMessage
+    If meOperacao = opVisualizacao Then
+      If mDS.Delete(Not bNotMessage) Then
+        Call UpdateStateCount
+        
+        If mDS.RS.RecordCount = 0 Then
+          RaiseEvent DepoisUpdate(-1)
+        End If
+      End If
+    End If
   End If
 End Sub
 
@@ -1292,10 +1329,9 @@ Public Sub Edit()
     RaiseEvent AntesEdit(mbCancelEvent)
     If mbCancelEvent Then Exit Sub
    
-    With mDS
-      .Resync
-      If Not .RS.EOF And Not .RS.BOF Then .RS.Move 0  'atualiza os controles (Atualização forçada)
-    End With
+    If Not mDS.Resync Then Exit Sub
+    
+    mDS.CloneRegFields
     mDS.Operacao = opAlteracao
   End If
 End Sub
@@ -1316,18 +1352,7 @@ Public Sub Update()
       End Select
     End If
   
-    Call ButtonsFuncEnabled(mDS.RS.RecordCount > 0)
-    
-    If meModelo = mdMaster Then
-      If mDS.RS.RecordCount = 0 Then
-        'Call ButtonsFuncEnabled(False)
-        shpRegistro.Width = MFuncoes.ContadorWidth(fraPanel(cPNLCont), meOperacao, 0, 0)
-        Call EnabledNaveg(False, False, False, False, False)
-      
-'      ElseIf nRCountOld = 0 Then
-'        Call ButtonsFuncEnabled(True)
-      End If
-    End If
+    Call UpdateStateCount
   End If
 End Sub
 
@@ -1368,41 +1393,46 @@ End Sub
 
 Private Sub mDS_MoveComplete(ByVal adReason As ADODB.EventReasonEnum, ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
     Debug.Print ("Insignia_DSControl.ideDSControl.mDS_MoveComplete")
-  If meModelo = mdMaster Then
-    Dim nRegCount As Long
-    Dim nPos As Long
+On Error GoTo Sair:
+
+  Dim nRegCount As Long
+  Dim nPos As Long
+      
+  With mDS.RS
+    nRegCount = .RecordCount
+    If nRegCount > 0 Then
+      If .EOF And .BOF Then .AbsolutePosition = 1
+      If IsRecordDeleted Then
+        .AbsolutePosition = nRegCount
+      End If
+      nPos = .AbsolutePosition
+    Else
+      nPos = 0
+    End If
   
-    On Error GoTo Sair:
-     
-    With mDS.RS
-      nRegCount = .RecordCount
-      If nRegCount > 0 Then
-        If .EOF And .BOF Then .AbsolutePosition = 1
-          nPos = .AbsolutePosition
-          Else: nPos = 0
-        End If
-  
-      nRegCount = .RecordCount
+    If meModelo = mdMaster Then
       If nRegCount <= 1 Then
         Call EnabledNaveg(False, False, False, False)
-        shpRegistro.Width = MFuncoes.ContadorWidth(fraPanel(cPNLCont), meOperacao, nPos, nRegCount)
-        Exit Sub
+        
+      Else
+        Select Case nPos
+          Case Is = adPosBOF, 1
+            Call EnabledNaveg(False, False, True, True)
+          Case Is = adPosEOF, nRegCount
+            Call EnabledNaveg(True, True, False, False)
+          Case Else
+            Call EnabledNaveg(True, True, True, True)
+        End Select
       End If
-  
-      Select Case nPos
-        Case Is = adPosBOF, 1
-          Call EnabledNaveg(False, False, True, True)
-        Case Is = adPosEOF, nRegCount
-          Call EnabledNaveg(True, True, False, False)
-        Case Else
-          Call EnabledNaveg(True, True, True, True)
-      End Select
+      
       shpRegistro.Width = MFuncoes.ContadorWidth(fraPanel(cPNLCont), meOperacao, nPos, nRegCount)
       DoEvents
-    End With
-  End If
+    End If
+    
+  End With
+  
 Sair:
-  RaiseEvent MoveComplete(adReason, pError, adStatusCancel, pRecordset)
+  If Not IsRecordDeleted Then RaiseEvent MoveComplete(adReason, pError, adStatusCancel, pRecordset)
   On Error GoTo 0
 End Sub
 
@@ -1662,3 +1692,22 @@ Public Property Let Informe(ByVal vNewValue As String)
     Debug.Print ("Insignia_DSControl.ideDSControl.Property Let Informe")
   fraPanel(cPNLIdent).Caption = vNewValue
 End Property
+
+Private Sub UpdateStateCount()
+  Call ButtonsFuncEnabled(mDS.RS.RecordCount > 0)
+    
+  If meModelo = mdMaster Then
+    If mDS.RS.RecordCount = 0 Then
+      'Call ButtonsFuncEnabled(False)
+      shpRegistro.Width = MFuncoes.ContadorWidth(fraPanel(cPNLCont), meOperacao, 0, 0)
+      Call EnabledNaveg(False, False, False, False, False)
+    
+'      ElseIf nRCountOld = 0 Then
+'        Call ButtonsFuncEnabled(True)
+    End If
+  End If
+End Sub
+    
+Public Function IsRecordDeleted()
+  IsRecordDeleted = mDS.IsRecordDeleted
+End Function

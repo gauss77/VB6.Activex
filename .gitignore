@@ -14,3 +14,7 @@
 *.lib
 *.lvw
 *.dca
+*.ldb
+*.obj
+
+Thumbs.db

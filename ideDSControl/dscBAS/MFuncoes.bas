@@ -5,6 +5,32 @@ Public gsParent As String
 
 Global Const cAPPNome = "ideDSControl 2.8.2003"
 
+Type tpError
+  Number As Long
+  Description As String
+  Source As String
+End Type
+
+Public Function CopyErrObject() As tpError
+  Dim ret As tpError
+  
+  ret.Number = Err.Number
+  ret.Description = Err.Description
+  ret.Source = Err.Source
+  
+  CopyErrObject = ret
+End Function
+
+Public Function IsDebug() As Boolean
+On Error GoTo TrataErro
+    Debug.Print 1 \ 0 'Divisao por zero, ocorre erro apenas em mode debug
+    IsDebug = False
+    
+    Exit Function
+TrataErro:
+    IsDebug = True
+End Function
+
 Public Sub ErrRaise()
   MsgBox Err.Number & ":(" & Err.Description & ")", vbCritical, "Erro: " & App.FileDescription
   Err.Clear
