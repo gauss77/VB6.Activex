@@ -1,0 +1,9 @@
+-> Procedimentos para a instalação do componente.
+
+1. Descompacte-o e copie-o na pasta onde o VB 6 está instalado. 
+   Geralmente a pasta de instalação do VB 6 é: C:\Arquivos de programas\Microsoft Visual Studio\VB98
+2. Feche o VB (caso esteja aberto).
+3. Registre a dll com o comando REGSVR32 VBMousewheel.dll
+4. Abra VB novamente. (Deverá mostrar uma tela de splash rapidamente ao carregar o vb)
+5. Pronto, o seu componente está instalado.
+
