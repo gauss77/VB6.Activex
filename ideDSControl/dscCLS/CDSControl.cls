@@ -138,7 +138,7 @@ Public Function Conectar(ByVal Source As String, _
   End If
   
   With mRsADO
-    .cursorLocation = pCursorLocation
+    .CursorLocation = pCursorLocation
     .Open Source, ActiveConnection, pCursorType, pLockType
     
     If .RecordCount = 0 Then
@@ -295,7 +295,7 @@ Public Function Update() As Boolean
   RaiseEvent AntesUpdate(mbCancelEvent, meOperacao)
   If mbCancelEvent Then Exit Function
   
-  Dim vFieldArray(), X As Integer
+  Dim vFieldArray(), x As Integer
   
   On Error Resume Next 'limpa o objeto error
   
@@ -358,14 +358,14 @@ Public Function Update() As Boolean
                   , vbExclamation + vbYesNoCancel, "Conflito na Informações") = vbYes Then
           'forca uma sobrescrita dos dados devemos armazenar os dados em um buffer
           ReDim vFieldArray(.Fields.Count - 1)
-          For X = 0 To .Fields.Count - 1
-            vFieldArray(X) = .Fields(X).Value
+          For x = 0 To .Fields.Count - 1
+            vFieldArray(x) = .Fields(x).Value
           Next
               
           .CancelUpdate
           If Me.Resync Then
-            For X = 0 To .Fields.Count - 1 'salva as alteracoes no banco de dados
-              If .Fields(X).Value <> vFieldArray(X) Then .Fields(X) = vFieldArray(X)
+            For x = 0 To .Fields.Count - 1 'salva as alteracoes no banco de dados
+              If .Fields(x).Value <> vFieldArray(x) Then .Fields(x) = vFieldArray(x)
             Next
                 
             .Update
@@ -784,7 +784,7 @@ Friend Sub CloneRegFields()
   Next
   
   'Adiciona os valores
-  mRsFieldClone.cursorLocation = adUseServer
+  mRsFieldClone.CursorLocation = adUseServer
   mRsFieldClone.Open , , adOpenKeyset
   mRsFieldClone.AddNew
   

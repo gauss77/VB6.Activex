@@ -283,10 +283,14 @@ Private Sub Form_Load()
     Unload Me
   Else
     With cmbProvedor
+      .Clear
+      
       .AddItem "PROVIDER=MSDataShape;Data PROVIDER=Microsoft.Jet.OLEDB.4.0;"
       .AddItem "PROVIDER=Microsoft.Jet.OLEDB.4.0;"
       .AddItem "PROVIDER=MSDataShape;Data PROVIDER=MSDASQL;"
       .AddItem "PROVIDER=MSDASQL;"
+      .AddItem "PROVIDER=MSDataShape;Data PROVIDER=Microsoft.ACE.OLEDB.12.0;"
+      .AddItem "PROVIDER=Microsoft.ACE.OLEDB.12.0;"
       
       .ListIndex = 0
     End With
@@ -296,7 +300,6 @@ End Sub
 Private Sub Form_Unload(Cancel As Integer)
   Set FPathDB = Nothing
 End Sub
-
 
 Private Sub lblButton_Click(Index As Integer)
   Select Case Index
