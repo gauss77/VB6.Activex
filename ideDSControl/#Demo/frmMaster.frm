@@ -1,7 +1,8 @@
 VERSION 5.00
-Object = "{C6FEE5AC-DF5F-47A6-BE77-6DCE10AA8AB9}#4.1#0"; "ideDSControl.ocx"
+Object = "{C6FEE5AC-DF5F-47A6-BE77-6DCE10AA8AB9}#4.2#0"; "ideDSControl.ocx"
 Begin VB.Form frmMaster 
-   Caption         =   "Form2"
+   BackColor       =   &H00C8D0D4&
+   Caption         =   "frmMaster"
    ClientHeight    =   4635
    ClientLeft      =   60
    ClientTop       =   345
@@ -12,7 +13,7 @@ Begin VB.Form frmMaster
    ScaleHeight     =   4635
    ScaleWidth      =   7890
    WindowState     =   2  'Maximized
-   Begin Insignia_DSControl.ideDSControl ideDSMaster 
+   Begin Insignia_DSControl.ideDSControl ideDSControl1 
       Align           =   1  'Align Top
       Height          =   810
       Left            =   0
@@ -21,10 +22,15 @@ Begin VB.Form frmMaster
       Width           =   7890
       _ExtentX        =   13917
       _ExtentY        =   1429
-      ButtonType      =   4
-      ButtonsExtras   =   7
-      ButtonColor     =   16106393
-      BackColor       =   15987699
+      CaptionColor    =   -2147483630
+      BackColor       =   13160660
+      ButtonColor     =   13160660
+      ButtonColorDesab=   9936289
+      ButtonsExtras   =   0
+      ButtonType      =   7
+      Modelo          =   0
+      Operacao        =   0
+      Permissoes      =   0
    End
    Begin VB.TextBox Text1 
       DataField       =   "MEMO"
@@ -269,36 +275,36 @@ Option Explicit
 Private Sub Form_Load()
   Const SQL = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source="
   
-  ideDSMaster.Conectar "SELECT * FROM TABELA", SQL & App.Path & "\Teste.mdb;"
-  ideDSMaster.MontarPesquisa "Código ID,ID,######|Nome,TEXTO,|Data,DATA,##/##/####|Sim Não,SIMNAO,|Numero,NUMRICO,######|HORA,HORA,##:##:##"
-  ideDSMaster.DataSource.AppName = App.EXEName
-  ideDSMaster.Permissoes = peTodos
-  ideDSMaster.ButtonsExtras = beSearch_Requery
+  With ideDSControl1
+
+    .Conectar "SELECT * FROM TABELA", SQL & App.Path & "\Teste.mdb;"
+    .MontarPesquisa "Código ID,ID,######|Nome,TEXTO,|Data,DATA,##/##/####|Sim Não,SIMNAO,|Numero,NUMRICO,######|HORA,HORA,##:##:##"
+    .DataSource.AppName = App.EXEName
+    .Permissoes = peTodos
+    .ButtonsExtras = beSearch_Requery
   
-  Dim O As TextBox
+    Dim oTxt As TextBox
   
-  For Each O In Text1
-    Set O.DataSource = ideDSMaster.DataSource.RS
-  Next
-  
-  If ideDSMaster.DataSource.RS.RecordCount > 0 Then
-    ideDSMaster.DataSource.MoveLast
-  End If
+    For Each oTxt In Text1
+      Set oTxt.DataSource = .DataSource.rs
+    Next
+    
+    If .DataSource.rs.RecordCount > 0 Then
+      .DataSource.MoveLast
+    End If
+  End With
 End Sub
 
-Private Sub ideDSMaster_MoveComplete(ByVal adReason As ADODB.EventReasonEnum, ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
+Private Sub ideDSControl1_MoveComplete(ByVal adReason As ADODB.EventReasonEnum, ByVal pError As ADODB.Error, adStatus As ADODB.EventStatusEnum, ByVal pRecordset As ADODB.Recordset)
   Static I As Integer
   
   I = I + 1
   Debug.Print "MoveComplete", I
 End Sub
 
-'Private Sub ideDSMaster_Operacao(ByVal eOperacao As OCXDSControl.eDSOperacao, ByVal eOperacaoAnterior As OCXDSControl.eDSOperacao)
+'Private Sub ideDSControl1_Operacao(ByVal eOperacao As OCXDSControl.eDSOperacao, ByVal eOperacaoAnterior As OCXDSControl.eDSOperacao)
 ''  Dim O As XDSField
 ''  For Each O In XDSField
 ''    O.TypeOperation = eOperacao
 ''  Next
 'End Sub
-Private Sub ideDSMaster_Operacao(ByVal eOperacao As Insignia_DSControl.eDSOperacao, ByVal eOperacaoAnterior As Insignia_DSControl.eDSOperacao)
-
-End Sub

@@ -3,10 +3,10 @@ Begin VB.MDIForm MDIForm1
    AutoShowChildren=   0   'False
    BackColor       =   &H8000000C&
    Caption         =   "MDIForm1"
-   ClientHeight    =   5400
+   ClientHeight    =   8850
    ClientLeft      =   60
    ClientTop       =   345
-   ClientWidth     =   9750
+   ClientWidth     =   13230
    LinkTopic       =   "MDIForm1"
    StartUpPosition =   3  'Windows Default
    Begin VB.PictureBox Picture1 
@@ -14,13 +14,21 @@ Begin VB.MDIForm MDIForm1
       Appearance      =   0  'Flat
       BackColor       =   &H80000005&
       ForeColor       =   &H80000008&
-      Height          =   5400
+      Height          =   8850
       Left            =   0
-      ScaleHeight     =   5370
+      ScaleHeight     =   8820
       ScaleWidth      =   1860
       TabIndex        =   0
       Top             =   0
       Width           =   1890
+      Begin VB.CommandButton cmdCliente 
+         Caption         =   "Cliente QRAuto"
+         Height          =   435
+         Left            =   120
+         TabIndex        =   6
+         Top             =   3555
+         Width           =   1500
+      End
       Begin VB.CommandButton Command1 
          Caption         =   "XDSMaster"
          Height          =   435
@@ -90,6 +98,24 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
+
+Private Sub cmdCliente_Click()
+    Dim frmNovo As frmClientes
+    Static intFormContador As Integer
+    
+    On Error GoTo trata_erros
+    
+    intFormContador = intFormContador + 1
+    
+    Set frmNovo = New frmClientes
+    Load frmNovo
+    frmNovo.Caption = "Formulários de Dados Multiusuário, Instancia => #" & intFormContador
+    frmNovo.Show
+    
+    Exit Sub
+trata_erros:
+     MsgBox Err.Description, vbInformation, " Erros "
+End Sub
 
 Private Sub Command1_Click()
   'Abre uma instância dodo formulario de dados

@@ -4,7 +4,8 @@ Object = "{AB4C3C68-3091-48D0-BB3D-8F92CD2CB684}#1.0#0"; "AButtons.ocx"
 Object = "{7493D2DD-8190-4122-AEA8-67726C4A96F5}#4.0#0"; "ideFrame.ocx"
 Begin VB.UserControl ideDSControl 
    Alignable       =   -1  'True
-   ClientHeight    =   1110
+   BackColor       =   &H00C8D0D4&
+   ClientHeight    =   1515
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   11100
@@ -21,7 +22,7 @@ Begin VB.UserControl ideDSControl
    ForwardFocus    =   -1  'True
    KeyPreview      =   -1  'True
    LockControls    =   -1  'True
-   ScaleHeight     =   1110
+   ScaleHeight     =   1515
    ScaleWidth      =   11100
    ToolboxBitmap   =   "ideDSControl.ctx":0000
    Begin Insignia_Frame.ideFrame fraBarra 
@@ -34,7 +35,7 @@ Begin VB.UserControl ideDSControl
       _ExtentX        =   19579
       _ExtentY        =   714
       BorderExt       =   6
-      BackColor       =   14737632
+      BackColor       =   13160660
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -50,7 +51,7 @@ Begin VB.UserControl ideDSControl
          Left            =   1530
          Style           =   2  'Dropdown List
          TabIndex        =   4
-         ToolTipText     =   "Ordem de exibição dos dados"
+         ToolTipText     =   "Ordem de exibiï¿½ï¿½o dos dados"
          Top             =   40
          Width           =   1875
       End
@@ -80,7 +81,7 @@ Begin VB.UserControl ideDSControl
             Height          =   195
             Left            =   2925
             TabIndex        =   10
-            ToolTipText     =   "Se marcado continua incluido após a confirmação"
+            ToolTipText     =   "Se marcado continua incluido apï¿½s a confirmaï¿½ï¿½o"
             Top             =   75
             Width           =   1755
          End
@@ -89,16 +90,16 @@ Begin VB.UserControl ideDSControl
             Index           =   0
             Left            =   45
             TabIndex        =   8
-            ToolTipText     =   "Confirmar Operação Ativa - [F8]"
+            ToolTipText     =   "[F8] - Confirmar operaï¿½ï¿½o ativa"
             Top             =   15
             Width           =   1395
             _ExtentX        =   2461
             _ExtentY        =   556
-            BTYPE           =   5
+            BTYPE           =   7
             TX              =   "Con&firmar"
             ENAB            =   -1  'True
             BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Century Gothic"
+               Name            =   "Arial"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -108,7 +109,7 @@ Begin VB.UserControl ideDSControl
             EndProperty
             COLTYPE         =   2
             FOCUSR          =   -1  'True
-            BCOL            =   14737632
+            BCOL            =   13160660
             FCOL            =   0
          End
          Begin AButtons.AButton abtBarra3 
@@ -116,16 +117,16 @@ Begin VB.UserControl ideDSControl
             Index           =   1
             Left            =   1485
             TabIndex        =   9
-            ToolTipText     =   "Cancelar Operação Ativa - [F9]"
+            ToolTipText     =   "[F9] - Cancelar operaï¿½ï¿½o"
             Top             =   15
             Width           =   1395
             _ExtentX        =   2461
             _ExtentY        =   556
-            BTYPE           =   5
+            BTYPE           =   7
             TX              =   "&Cancelar"
             ENAB            =   -1  'True
             BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-               Name            =   "Century Gothic"
+               Name            =   "Arial"
                Size            =   8.25
                Charset         =   0
                Weight          =   700
@@ -135,7 +136,7 @@ Begin VB.UserControl ideDSControl
             EndProperty
             COLTYPE         =   2
             FOCUSR          =   -1  'True
-            BCOL            =   14737632
+            BCOL            =   13160660
             FCOL            =   0
          End
       End
@@ -163,7 +164,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":0312
       End
@@ -191,7 +192,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":06AC
       End
@@ -219,7 +220,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":0A46
       End
@@ -247,21 +248,21 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":0DE0
       End
       Begin AButtons.AButton abtBarra1 
          Height          =   315
          Index           =   3
-         Left            =   3810
+         Left            =   3870
          TabIndex        =   6
          ToolTipText     =   "[F3] - Pesquisar no Banco de Dados"
-         Top             =   40
+         Top             =   45
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -275,21 +276,21 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":117A
       End
       Begin AButtons.AButton abtBarra1 
          Height          =   315
          Index           =   4
-         Left            =   4170
+         Left            =   4230
          TabIndex        =   7
-         ToolTipText     =   "Imprimir Relatórios"
-         Top             =   40
+         ToolTipText     =   "Imprimir Relatï¿½rio"
+         Top             =   45
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -303,7 +304,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":1714
       End
@@ -312,12 +313,12 @@ Begin VB.UserControl ideDSControl
          Index           =   5
          Left            =   3405
          TabIndex        =   5
-         ToolTipText     =   "Alterna entre ordenação ascendente e descendente"
+         ToolTipText     =   "Alternar ordem ascendente e descendente"
          Top             =   40
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -331,7 +332,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":1CAE
       End
@@ -346,7 +347,6 @@ Begin VB.UserControl ideDSControl
       _ExtentX        =   19579
       _ExtentY        =   714
       BorderExt       =   6
-      BackColor       =   14737632
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
          Name            =   "Tahoma"
          Size            =   8.25
@@ -361,12 +361,12 @@ Begin VB.UserControl ideDSControl
          Index           =   3
          Left            =   1140
          TabIndex        =   14
-         ToolTipText     =   "[End] - Movimenta para o último registro"
+         ToolTipText     =   "[End] - Navegar para o ï¿½ï¿½ltimoregistro"
          Top             =   30
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -380,7 +380,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":2048
       End
@@ -389,12 +389,12 @@ Begin VB.UserControl ideDSControl
          Index           =   2
          Left            =   780
          TabIndex        =   13
-         ToolTipText     =   "[PageDown] - Movimenta para o próximo registro"
+         ToolTipText     =   "[PageDown] - Navegar para o proï¿½ximo registro"
          Top             =   30
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -408,7 +408,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":25E2
       End
@@ -417,12 +417,12 @@ Begin VB.UserControl ideDSControl
          Index           =   1
          Left            =   420
          TabIndex        =   12
-         ToolTipText     =   " [PageUp] - Movimenta para o registro anterior"
+         ToolTipText     =   " [PageUp] - Navegar para o registro anterior"
          Top             =   30
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -436,7 +436,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":2B7C
       End
@@ -445,12 +445,12 @@ Begin VB.UserControl ideDSControl
          Index           =   0
          Left            =   60
          TabIndex        =   11
-         ToolTipText     =   "[Home] - Movimenta para o primeiro registro"
+         ToolTipText     =   "[Home] - Navegar para o primeiro registro"
          Top             =   30
          Width           =   360
          _ExtentX        =   635
          _ExtentY        =   556
-         BTYPE           =   5
+         BTYPE           =   7
          TX              =   ""
          ENAB            =   -1  'True
          BeginProperty FONT {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
@@ -464,7 +464,7 @@ Begin VB.UserControl ideDSControl
          EndProperty
          COLTYPE         =   2
          FOCUSR          =   -1  'True
-         BCOL            =   14737632
+         BCOL            =   13160660
          FCOL            =   0
          PICTURE         =   "ideDSControl.ctx":3116
       End
@@ -482,7 +482,7 @@ Begin VB.UserControl ideDSControl
          Caption         =   "Pesquisar"
          CaptionAlign    =   3
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Century Gothic"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -529,9 +529,10 @@ Begin VB.UserControl ideDSControl
          _ExtentX        =   3228
          _ExtentY        =   450
          BorderExt       =   6
+         BackColor       =   13160660
          Caption         =   "0 / 0"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Century Gothic"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -559,9 +560,10 @@ Begin VB.UserControl ideDSControl
          _ExtentX        =   2381
          _ExtentY        =   450
          BorderExt       =   6
+         BackColor       =   13160660
          Caption         =   "Identificador"
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Century Gothic"
+            Name            =   "Arial"
             Size            =   8.25
             Charset         =   0
             Weight          =   700
@@ -590,15 +592,11 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = True
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = True
-'################################################################
-'# Projeto          : Controle XDataSource                      #
-'# Data de início   : 25/10/2001                                #
-'#«««««««««««««««««««««««« Descrição »»»»»»»»»»»»»»»»»»»»»»»»»»»#
-'# Arquivo      :                     Criado: 05/11/2001        #
-'# Comentário   : Controle para Navegação e Manipulação do      #
-'#                RecordSet ADO.                                #
-'# Analista     : Heliomar Pereira Marques dos Santos           #
-'################################################################
+'---------------------------------------------------------------------------------------
+' Module    : 25/10/2020 10:28 - ideDSControl
+' Autor     : Heliomar P. Marques
+' Descriï¿½ï¿½o : Controle para Navegaï¿½ï¿½o e Manipulaï¿½ï¿½o de dados .mdb
+'---------------------------------------------------------------------------------------
 
 Option Explicit
 
@@ -608,19 +606,18 @@ Attribute mDS.VB_VarHelpID = -1
 Private maFields()        As String   'Fields de Pesquisa e Ordem
 Private maMasks()         As String   'Mascara do Campos de Pesquisa
 
-Private mbCancelEvent     As Boolean
-
-Private meOperacao        As eDSOperacao
-Private meBTNExtras       As eDSBotoesExtras
-Private meDSPermissoes    As eDSPermissoes
-Private mbFlatButtons     As Boolean
-Private mbAddContFlag     As Boolean
-Private meModelo          As eDSModelo
-Private meButtonType      As AButtons.ButtonTypes
+Private mCaptionColor     As OLE_COLOR
+Private mBackColor        As OLE_COLOR
 Private mBtnColor         As OLE_COLOR
-Private mBtnColorInative  As OLE_COLOR
-Private Const cCorDesab = &HC0C0C0
+Private mBtnColorDisable  As OLE_COLOR
+Private meBTNExtras       As eDSBotoesExtras
+Private meButtonType      As AButtons.ButtonTypes
+Private meModelo          As eDSModelo
+Private meOperacao        As eDSOperacao
+Private meDSPermissoes    As eDSPermissoes
 
+Private mbCancelEvent     As Boolean
+Private mbAddContFlag     As Boolean
 Private mbSortDesc        As Boolean
 
 '======Constantes
@@ -664,16 +661,16 @@ Attribute About.VB_UserMemId = -552
 End Sub
 
 Public Sub SetNewDS()
-    Debug.Print ("Insignia_DSControl.ideDSControl.SetNewDS")
+  Debug.Print ("Insignia_DSControl.ideDSControl.SetNewDS")
   If mDS Is Nothing Then
     Set mDS = New CDSControl
   Else
-    MsgBox "DataSource já esta conectado!"
+    MsgBox "DataSource Conectado!"
   End If
 End Sub
 
 Private Sub abtBarra1_Click(Index As Integer)
-    Debug.Print ("Insignia_DSControl.ideDSControl.abtBarra1_Click")
+  Debug.Print ("Insignia_DSControl.ideDSControl.abtBarra1_Click")
   With mDS
     Select Case Index
       Case Is = 0:  Call .AddNew
@@ -690,7 +687,7 @@ Private Sub abtBarra1_Click(Index As Integer)
 End Sub
 
 Private Sub abtBarra2_Click(Index As Integer)
-    Debug.Print ("Insignia_DSControl.ideDSControl.abtBarra2_Click")
+  Debug.Print ("Insignia_DSControl.ideDSControl.abtBarra2_Click")
   With mDS
     Select Case Index
       Case Is = 0:  Call .MoveFirst
@@ -702,7 +699,7 @@ Private Sub abtBarra2_Click(Index As Integer)
 End Sub
 
 Private Sub abtBarra3_Click(Index As Integer)
-    Debug.Print ("Insignia_DSControl.ideDSControl.abtBarra3_Click")
+  Debug.Print ("Insignia_DSControl.ideDSControl.abtBarra3_Click")
   Select Case Index
     Case Is = 0:  Call Update
     Case Is = 1:  Call mDS.Cancel
@@ -720,30 +717,38 @@ Private Sub mDS_RecordDeleted()
 End Sub
 
 Private Sub UserControl_InitProperties()
-    Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_InitProperties")
-    meOperacao = opVisualizacao
-    meBTNExtras = beNone
-    mbFlatButtons = True
-    meDSPermissoes = peTodos
-    mBtnColorInative = cCorDesab
+  Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_InitProperties")
+
+  mCaptionColor = Ambient.ForeColor
+  mBackColor = &HC8D0D4
+  mBtnColor = &HC8D0D4
+  mBtnColorDisable = &H979DA1
+  meBTNExtras = eDSBotoesExtras.beNone
+  meButtonType = AButtons.ButtonTypes.[Simple Flat]
+  meModelo = eDSModelo.mdMaster
+  meOperacao = eDSOperacao.opVisualizacao
+  meDSPermissoes = eDSPermissoes.peTodos
 End Sub
 
 Private Sub UserControl_KeyDown(KeyCode As Integer, Shift As Integer)
-    Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_KeyDown")
-    MFuncoes.KeyDown Me, KeyCode, Shift
+  Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_KeyDown")
+  MFuncoes.KeyDown Me, KeyCode, Shift
 End Sub
 
 Private Sub UserControl_ReadProperties(PropBag As PropertyBag)
   Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_ReadProperties")
-  meOperacao = PropBag.ReadProperty("Operacao", 0)
-  Me.Modelo = PropBag.ReadProperty("Modelo", mdMaster)
-  Me.CaptionColor = PropBag.ReadProperty("CaptionColor", Ambient.ForeColor) 'vbBlack)
-  Me.Permissoes = PropBag.ReadProperty("Permissoes", meDSPermissoes)
-  Me.ButtonType = PropBag.ReadProperty("ButtonType", AButtons.ButtonTypes.[Simple Flat])
+   
+  Me.CaptionColor = PropBag.ReadProperty("CaptionColor", mCaptionColor)
+  Me.BackColor = PropBag.ReadProperty("BackColor", mBackColor)
+  Me.ButtonColor = PropBag.ReadProperty("ButtonColor", mBtnColor)
+  Me.ButtonColorDesab = PropBag.ReadProperty("ButtonColorDesab", mBtnColorDisable)
   Me.ButtonsExtras = PropBag.ReadProperty("ButtonsExtras", meBTNExtras)
-  Me.ButtonColorDesab = PropBag.ReadProperty("ButtonColorDesab", cCorDesab)
-  Me.ButtonColor = PropBag.ReadProperty("ButtonColor", &HE0E0E0)
-  Me.BackColor = PropBag.ReadProperty("BackColor", Ambient.BackColor) '&HC0C0C0)
+  Me.ButtonType = PropBag.ReadProperty("ButtonType", meButtonType)
+  Me.Modelo = PropBag.ReadProperty("Modelo", meModelo)
+  Me.Operacao = PropBag.ReadProperty("Operacao", meOperacao)
+  Me.Permissoes = PropBag.ReadProperty("Permissoes", meDSPermissoes)
+  
+  UserControl.Enabled = PropBag.ReadProperty("Enabled", True)
 End Sub
 
 Public Property Get IsConnected() As Boolean
@@ -768,21 +773,21 @@ Public Sub ReConectar()
   If IsConnected Then
     Dim sql As String
     Dim actConnection As Variant
-    Dim cursorLocation As CursorLocationEnum
-    Dim cursorType As CursorTypeEnum
-    Dim lockType As LockTypeEnum
+    Dim eCursorLocation As CursorLocationEnum
+    Dim eCursorType As CursorTypeEnum
+    Dim eLockType As LockTypeEnum
 
     With mDS.RS
       sql = .Source
       actConnection = .ActiveConnection
-      cursorLocation = .cursorLocation
-      cursorType = .cursorType
-      lockType = .lockType
+      eCursorLocation = .CursorLocation
+      eCursorType = .CursorType
+      eLockType = .LockType
     End With
     mDS.DesConectar
     Set mDS = Nothing
 
-    Call Conectar(sql, actConnection, cursorLocation, cursorType, lockType)
+    Call Conectar(sql, actConnection, eCursorLocation, eCursorType, eLockType)
   End If
 End Sub
 
@@ -846,7 +851,7 @@ Private Sub ButtonsFuncEnabled(bEnabled As Boolean)
   Next
   
   'Se estiver mandando habilitar botoes entao deve
-  'verificar se é permitido utiliza-lós
+  'verificar se ï¿½ permitido utilizar
   If bEnabled Then
     Me.Permissoes = meDSPermissoes
   Else
@@ -859,7 +864,7 @@ Public Property Get Operacao() As eDSOperacao
 End Property
 
 Public Property Let Operacao(ByVal vNewValue As eDSOperacao)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let Operacao")
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let Operacao")
   Dim bOpView As Boolean
   
   bOpView = vNewValue = opVisualizacao
@@ -886,15 +891,15 @@ Public Property Let Operacao(ByVal vNewValue As eDSOperacao)
     Dim sDesc As String
     Select Case vNewValue
       Case Is = opAlteracao
-        sDesc = "Operação de Alteração"
+        sDesc = "Operaï¿½ï¿½o de Alteraï¿½ï¿½o"
       Case Is = opInclusao
         If mbAddContFlag Then
-          sDesc = "Operação de Inclusão Continua"
+          sDesc = "Operaï¿½ï¿½o de Inclusï¿½o continua"
         Else
-          sDesc = "Operação de Inclusão"
+          sDesc = "Operaï¿½ï¿½o de Inclusï¿½o"
         End If
       Case Is = opVisualizacao
-        sDesc = "Operação de Visualização"
+        sDesc = "Operaï¿½ï¿½o de Visualizaï¿½ï¿½o"
     End Select
     
     fraPanel(cPNLIdent).Caption = sDesc
@@ -902,43 +907,15 @@ Public Property Let Operacao(ByVal vNewValue As eDSOperacao)
   
   RaiseEvent Operacao(vNewValue, meOperacao)
   meOperacao = vNewValue
+  PropertyChanged "Operacao"
 End Property
-
-'Public Sub AddButton(ButtonKey As String, Caption As String, _
-'                     Optional tpButton As eTBButtonStyles = bsButton, _
-'                     Optional Picture As StdPicture, _
-'                     Optional ToolTip As String)
-'  TBar(cTBarFunc).AddButtonEx ButtonKey, tpButton, Picture, ToolTip, , , Caption
-'End Sub
-
-'Public Property Get FlatButtons() As Boolean
-'  FlatButtons = mbFlatButtons
-'End Property
-'
-'Public Property Let FlatButtons(ByVal vNewValue As Boolean)
-'  Dim oT As asxToolbar
-'  Dim i As Integer
-'
-'  If vNewValue Then
-'    i = apFlat
-'  Else
-'    i = apStandard
-'  End If
-'
-'  For Each oT In TBar
-'    oT.Appearance = i
-'  Next
-'
-'  mbFlatButtons = vNewValue
-'
-'  PropertyChanged "FlatButtons"
-'End Property
 
 Public Property Get BackColor() As OLE_COLOR
-  BackColor = fraBarra(0).BackColor
+  BackColor = mBackColor
 End Property
+
 Public Property Let BackColor(ByVal vNewValue As OLE_COLOR)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let BackColor")
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let BackColor")
   Dim oCtr As ideFrame
   
   For Each oCtr In fraBarra
@@ -952,6 +929,7 @@ Public Property Let BackColor(ByVal vNewValue As OLE_COLOR)
   Set oCtr = Nothing
 
   chkContinuarInsert.BackColor = vNewValue
+  mBackColor = vNewValue
   
   PropertyChanged "BackColor"
 End Property
@@ -961,37 +939,24 @@ Public Property Get ButtonColor() As OLE_COLOR
 End Property
 
 Public Property Let ButtonColor(ByVal vNewValue As OLE_COLOR)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let ButtonColor")
-  Dim btn As AButton
-  
-  For Each btn In abtBarra1
-    btn.BackColor = IIf(btn.Enabled, vNewValue, mBtnColorInative)
-    Set btn = Nothing
-  Next
-
-  For Each btn In abtBarra2
-    btn.BackColor = IIf(btn.Enabled, vNewValue, mBtnColorInative)
-    Set btn = Nothing
-  Next
-  
-  For Each btn In abtBarra3
-    btn.BackColor = IIf(btn.Enabled, vNewValue, mBtnColorInative)
-    Set btn = Nothing
-  Next
-  
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let ButtonColor")
   mBtnColor = vNewValue
+  
+  Call UpdateButtonColor
   PropertyChanged "ButtonColor"
 End Property
+
 
 Public Property Get ButtonColorDesab() As OLE_COLOR
-  ButtonColorDesab = mBtnColorInative
+  ButtonColorDesab = mBtnColorDisable
 End Property
+
 Public Property Let ButtonColorDesab(ByVal vNewValue As OLE_COLOR)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let ButtonColorDesab")
-  mBtnColorInative = vNewValue
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let ButtonColorDesab")
+  mBtnColorDisable = vNewValue
   
-  Me.ButtonColor = mBtnColor  'Força a mudança de cor de todos os botoes, aqui deve passar a cordo do botao ativo
-  PropertyChanged "ButtonColor"
+  Call UpdateButtonColor
+  PropertyChanged "ButtonColorDesab"
 End Property
 
 
@@ -1021,10 +986,11 @@ Public Property Let ButtonType(ByVal vNewValue As AButtons.ButtonTypes)
 End Property
 
 Public Property Get CaptionColor() As OLE_COLOR
-  CaptionColor = fraPanel(0).ForeColor
+  CaptionColor = mCaptionColor
 End Property
+
 Public Property Let CaptionColor(ByVal vNewValue As OLE_COLOR)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let CaptionColor")
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let CaptionColor")
   Dim oT As AButton
 
   For Each oT In abtBarra3
@@ -1041,6 +1007,7 @@ Public Property Let CaptionColor(ByVal vNewValue As OLE_COLOR)
   chkContinuarInsert.ForeColor = vNewValue
   fraBarra(3).ForeColor = vNewValue
   
+  mCaptionColor = vNewValue
   PropertyChanged "CaptionColor"
 End Property
 
@@ -1049,7 +1016,7 @@ Public Property Get ButtonsExtras() As eDSBotoesExtras
 End Property
 
 Public Property Let ButtonsExtras(ByVal vNewValue As eDSBotoesExtras)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let ButtonsExtras")
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let ButtonsExtras")
   Dim bI As Boolean, bL As Boolean, bA As Boolean
 
   Select Case vNewValue
@@ -1074,6 +1041,10 @@ Public Property Let ButtonsExtras(ByVal vNewValue As eDSBotoesExtras)
   abtBarra1(4).Enabled = bI 'Imprimir
   abtBarra1(7).Enabled = bA 'Atualizar
 
+  Call UpdateButtonColor(abtBarra1(3))
+  Call UpdateButtonColor(abtBarra1(4))
+  Call UpdateButtonColor(abtBarra1(7))
+
   meBTNExtras = vNewValue
   PropertyChanged "ButtonsExtras"
 End Property
@@ -1083,7 +1054,7 @@ Public Sub OperacaoPesquisar()
   If meModelo = mdMaster Then
     Dim bCheck As Boolean
         
-    'Botao não esta visivel entao presume-se que nao se pode usa-lo
+    'Botao nao esta visivel entao presume-se que nao se pode usa-lo
     'Caso esteja sendo chamado por tecla de atalho
     If Not abtBarra1(3).Visible Then Exit Sub   'Localizar
     
@@ -1115,7 +1086,7 @@ Public Sub OperacaoPesquisar()
   ElseIf meModelo = mdSimples Then
     Static bUsou As Boolean
     
-    'Botao não esta visivel entao presume-se que nao se pode usa-lo
+    'Botao nao esta visivel entao presume-se que nao se pode usa-lo
     'Caso esteja sendo chamado pelo Teclado
     If Not abtBarra1(4).Visible Then Exit Sub ' TBar.ButtonVisible("Localizar") Then Exit Sub
     
@@ -1132,18 +1103,19 @@ Public Sub OperacaoPesquisar()
       FSearch.ShowForm mDS
       bUsou = True
     Else
-      FSearch.Show vbModal    'o form já esta carregado
+      FSearch.Show vbModal
     End If
   End If
   
 End Sub
 
 Private Sub UserControl_GetDataMember(DataMember As String, Data As Object)
-    Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_GetDataMember")
+ Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_GetDataMember")
  If Ambient.UserMode And IsConnected Then Call mDS.Class_GetDataMember(DataMember, Data)
 End Sub
 
 Private Sub UserControl_Initialize()
+  Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_Initialize")
   shpRegistro.Left = 15
   shpRegistro.Width = 0
   
@@ -1156,23 +1128,22 @@ End Sub
 
 Private Sub UserControl_Terminate()
   On Error Resume Next
-  SaveSetting App.EXEName, "Campo Order", gsParent, Combos(cCmbOrder).ListIndex
-  SaveSetting App.EXEName, "Campo Pesquisa", gsParent, Combos(cCmbPesq).ListIndex
-  SaveSetting App.EXEName, "Valor Pesquisa", gsParent, txtPesquisa.Text
+  SaveSetting App.EXEName, "OrderBy", gsParent, Combos(cCmbOrder).ListIndex
+  SaveSetting App.EXEName, "FindBy", gsParent, Combos(cCmbPesq).ListIndex
+  SaveSetting App.EXEName, "FindValue", gsParent, txtPesquisa.Text
   On Error GoTo 0
       
   Me.DesConectar
 End Sub
 
 Public Sub KeyDown(KeyCode As Integer, Shift As Integer)
-    Debug.Print ("Insignia_DSControl.ideDSControl.KeyDown")
+  Debug.Print ("Insignia_DSControl.ideDSControl.KeyDown")
   If Ambient.UserMode And IsConnected Then
     MFuncoes.KeyDown Me, KeyCode, Shift
   End If
 End Sub
 
 Private Sub UserControl_Resize()
-    Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_Resize")
     Dim iH As Integer
     
     If meModelo = mdMaster Then
@@ -1205,7 +1176,7 @@ Public Property Get Enabled() As Boolean
 End Property
 
 Public Property Let Enabled(ByVal vNewValue As Boolean)
-    Debug.Print ("Insignia_DSControl.ideDSControl.Property Let Enabled")
+  Debug.Print ("Insignia_DSControl.ideDSControl.Property Let Enabled")
   UserControl.Enabled = vNewValue
   
   Dim oC As Control
@@ -1215,6 +1186,8 @@ Public Property Let Enabled(ByVal vNewValue As Boolean)
     oC.Enabled = vNewValue
   Next
   On Error GoTo 0
+  
+  PropertyChanged "Enabled"
 End Property
 
 'Private Sub fraPanel_MouseDown(Index As Integer, Button As Integer, Shift As Integer, x As Single, Y As Single)
@@ -1290,7 +1263,7 @@ End Sub
 
 Public Sub AddNew(Optional ByVal FieldList, Optional ByVal Values)
     Debug.Print ("Insignia_DSControl.ideDSControl.AddNew")
-  'Botao não esta visivel entao presume-se que nao se pode usa-lo
+  'Botao nao esta visivel entao presume-se que nao se pode usa-lo
   If Not abtBarra1(0).Enabled Then Exit Sub
 
   If meOperacao = opVisualizacao Then
@@ -1300,7 +1273,7 @@ End Sub
 
 Public Sub Delete()
     Debug.Print ("Insignia_DSControl.ideDSControl.Delete")
-  'Botao não esta habilitado entao presume-se que nao se pode usa-lo
+  'Botao nao esta habilitado entao presume-se que nao se pode usa-lo
   If Not abtBarra1(2).Enabled Then Exit Sub
   
   Dim bNotMessage As Boolean
@@ -1321,7 +1294,7 @@ End Sub
 
 Public Sub Edit()
     Debug.Print ("Insignia_DSControl.ideDSControl.Edit")
-  'Botao não esta visivel entao presume-se que nao se pode usa-lo
+  'Botao nao esta visivel entao presume-se que nao se pode usa-lo
   If Not abtBarra1(1).Enabled Then Exit Sub
 
   If meOperacao = opVisualizacao Then
@@ -1490,7 +1463,7 @@ Private Sub EnabledNaveg(bNavPri As Boolean, _
   Dim btn As AButton
   
   For Each btn In abtBarra2
-    btn.BackColor = IIf(btn.Enabled, mBtnColor, mBtnColorInative)
+    btn.BackColor = IIf(btn.Enabled, mBtnColor, mBtnColorDisable)
     Set btn = Nothing
   Next
 End Sub
@@ -1526,20 +1499,22 @@ Public Property Let Permissoes(ByVal vNewValue As eDSPermissoes)
     abtBarra1(1).Enabled = bA
     abtBarra1(2).Enabled = bD
     
-    Me.ButtonColor = mBtnColor 'Força a atualização das cores de todos os botoes
+    Call UpdateButtonColor   'atualiza cores de todos os botoes
+    PropertyChanged "Permissoes"
 End Property
 
 Private Sub UserControl_WriteProperties(PropBag As PropertyBag)
-    Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_WriteProperties")
-    Call PropBag.WriteProperty("Operacao", meOperacao, 0)
-    Call PropBag.WriteProperty("Modelo", meModelo, mdMaster)
-    Call PropBag.WriteProperty("CaptionColor", abtBarra1(0).ForeColor, vbBlack)
-    Call PropBag.WriteProperty("Permissoes", meDSPermissoes, peTodos)
-    Call PropBag.WriteProperty("ButtonType", meButtonType, AButtons.ButtonTypes.[Simple Flat])
-    Call PropBag.WriteProperty("ButtonsExtras", meBTNExtras, 0)
-    Call PropBag.WriteProperty("ButtonColorDesab", mBtnColorInative, cCorDesab)
-    Call PropBag.WriteProperty("ButtonColor", mBtnColor, &HE0E0E0)
-    Call PropBag.WriteProperty("BackColor", fraBarra(0).BackColor, &HC0C0C0)
+  Debug.Print ("Insignia_DSControl.ideDSControl.UserControl_WriteProperties")
+
+  Call PropBag.WriteProperty("CaptionColor", mCaptionColor)
+  Call PropBag.WriteProperty("BackColor", mBackColor)
+  Call PropBag.WriteProperty("ButtonColor", mBtnColor)
+  Call PropBag.WriteProperty("ButtonColorDesab", mBtnColorDisable)
+  Call PropBag.WriteProperty("ButtonsExtras", meBTNExtras)
+  Call PropBag.WriteProperty("ButtonType", meButtonType)
+  Call PropBag.WriteProperty("Modelo", meModelo)
+  Call PropBag.WriteProperty("Operacao", meOperacao)
+  Call PropBag.WriteProperty("Permissoes", meDSPermissoes)
 End Sub
 
 Public Sub MontarPesquisa(ByVal psAliasFieldMask As String)
@@ -1559,7 +1534,7 @@ Public Sub MontarPesquisa(ByVal psAliasFieldMask As String)
     sField = Trim$(aL(1))
     sMask = LTrim$(aL(2))
      
-    If sMask <> "ñP" Then '"ñP" Significa que não entra na pesquisa
+    If sMask <> "ï¿½P" Then 'Significa que nao entra na pesquisa
       With Combos(cCmbOrder)
         .AddItem sCapt
         
@@ -1648,15 +1623,15 @@ End Sub
 
 Private Sub LerREG()
     Debug.Print ("Insignia_DSControl.ideDSControl.LerREG")
-  ' Ler os valores dos campo de indexação e Pesquisa usado pela ultima vezes
+  ' Ler os valores dos campo de ordem e pesquisa usado pela ultima vezes
   With Combos(cCmbOrder)
     If .ListCount > 0 Then
       On Error GoTo ErrIndex
-      .ListIndex = GetSetting(App.EXEName, "Campo Order", gsParent, "0")
+      .ListIndex = GetSetting(App.EXEName, "OrderBy", gsParent, "0")
       On Error GoTo 0
     Else
 ErrIndex:
-      Call SaveSetting(App.EXEName, "Campo Order", gsParent, 0)
+      Call SaveSetting(App.EXEName, "OrderBy", gsParent, 0)
       Err.Clear
     End If
   End With
@@ -1664,16 +1639,16 @@ ErrIndex:
   With Combos(cCmbPesq)
     If .ListCount > 0 Then
       On Error GoTo ErrPesquisa
-      .ListIndex = GetSetting(App.EXEName, "Campo Pesquisa", gsParent, "0")
+      .ListIndex = GetSetting(App.EXEName, "FindBy", gsParent, "0")
       On Error GoTo 0
     Else
 ErrPesquisa:
-      Call SaveSetting(App.EXEName, "Campo Pesquisa", gsParent, 0)
+      Call SaveSetting(App.EXEName, "FindBy", gsParent, 0)
       Err.Clear
     End If
   End With
   
-  txtPesquisa.Text = GetSetting(App.EXEName, "Valor Pesquisa", gsParent, "")
+  txtPesquisa.Text = GetSetting(App.EXEName, "FindValue", gsParent, "")
 End Sub
 
 Public Property Get Modelo() As eDSModelo
@@ -1711,3 +1686,26 @@ End Sub
 Public Function IsRecordDeleted()
   IsRecordDeleted = mDS.IsRecordDeleted
 End Function
+
+Private Sub UpdateButtonColor(Optional ByRef pButton As AButton = Nothing)
+  If (Not pButton Is Nothing) Then
+    pButton.BackColor = IIf(pButton.Enabled, mBtnColor, mBtnColorDisable)
+  Else
+    Dim btn As AButton
+    
+    For Each btn In abtBarra1
+      btn.BackColor = IIf(btn.Enabled, mBtnColor, mBtnColorDisable)
+      Set btn = Nothing
+    Next
+  
+    For Each btn In abtBarra2
+      btn.BackColor = IIf(btn.Enabled, mBtnColor, mBtnColorDisable)
+      Set btn = Nothing
+    Next
+    
+    For Each btn In abtBarra3
+      btn.BackColor = IIf(btn.Enabled, mBtnColor, mBtnColorDisable)
+      Set btn = Nothing
+    Next
+  End If
+End Sub

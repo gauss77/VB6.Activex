@@ -5,7 +5,7 @@ Object = "{7493D2DD-8190-4122-AEA8-67726C4A96F5}#4.0#0"; "ideFrame.ocx"
 Begin VB.Form FSearch 
    BackColor       =   &H00E0E0E0&
    BorderStyle     =   3  'Fixed Dialog
-   ClientHeight    =   2175
+   ClientHeight    =   2205
    ClientLeft      =   1950
    ClientTop       =   2100
    ClientWidth     =   5595
@@ -23,9 +23,10 @@ Begin VB.Form FSearch
    Icon            =   "FSearch.frx":0000
    KeyPreview      =   -1  'True
    LinkTopic       =   "Form1"
+   LockControls    =   -1  'True
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   2175
+   ScaleHeight     =   2205
    ScaleWidth      =   5595
    ShowInTaskbar   =   0   'False
    Begin Insignia_Frame.ideFrame ideFrame 
@@ -45,7 +46,7 @@ Begin VB.Form FSearch
       Caption         =   "Janela de Pesquisa..."
       CaptionAlign    =   3
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "System"
+         Name            =   "Arial"
          Size            =   9.75
          Charset         =   0
          Weight          =   700
@@ -86,51 +87,51 @@ Begin VB.Form FSearch
    End
    Begin Insignia_Frame.ideFrame ideFrame 
       Align           =   1  'Align Top
-      Height          =   1500
+      Height          =   1545
       Index           =   1
       Left            =   0
       Top             =   345
       Width           =   5595
       _ExtentX        =   9869
-      _ExtentY        =   2646
+      _ExtentY        =   2725
       BorderExt       =   6
       BorderInt       =   6
       BorderPaint     =   10
-      BorderWidth     =   20
+      BorderWidth     =   17
       BackColor       =   14737632
       BackColorB      =   16777215
       GradientStyle   =   3
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "System"
+         Name            =   "Verdana"
          Size            =   9.75
          Charset         =   0
-         Weight          =   700
+         Weight          =   400
          Underline       =   0   'False
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
       Begin VB.ComboBox cmbCampos 
          BeginProperty Font 
-            Name            =   "Century Gothic"
-            Size            =   8.25
+            Name            =   "Verdana"
+            Size            =   9
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Height          =   360
+         Height          =   330
          Left            =   315
          Style           =   2  'Dropdown List
          TabIndex        =   3
-         Top             =   570
+         Top             =   600
          Width           =   1935
       End
       Begin AButtons.AButton abtButtons 
          Height          =   390
          Left            =   4080
          TabIndex        =   1
-         Top             =   1020
+         Top             =   1050
          Width           =   1230
          _ExtentX        =   2170
          _ExtentY        =   688
@@ -156,13 +157,13 @@ Begin VB.Form FSearch
          Left            =   2340
          TabIndex        =   2
          ToolTipText     =   "Para pesquisar sobrenome digite primeiro sinal de porcentagem (%)"
-         Top             =   585
+         Top             =   615
          Width           =   2970
          _ExtentX        =   5239
          _ExtentY        =   609
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-            Name            =   "Century Gothic"
-            Size            =   8.25
+            Name            =   "Verdana"
+            Size            =   9
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -171,16 +172,16 @@ Begin VB.Form FSearch
          EndProperty
          TextCase        =   1
          RawText         =   0
-         FontName        =   "Century Gothic"
-         FontSize        =   8,25
+         FontName        =   "Verdana"
+         FontSize        =   9
       End
       Begin VB.Label Label1 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "&Pesquizar por:"
          BeginProperty Font 
-            Name            =   "Century Gothic"
-            Size            =   8.25
+            Name            =   "Verdana"
+            Size            =   9
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -188,20 +189,20 @@ Begin VB.Form FSearch
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00000000&
-         Height          =   240
+         Height          =   210
          Index           =   0
          Left            =   315
          TabIndex        =   5
-         Top             =   315
-         Width           =   1125
+         Top             =   345
+         Width           =   1380
       End
       Begin VB.Label Label1 
          AutoSize        =   -1  'True
          BackStyle       =   0  'Transparent
          Caption         =   "&Valor de Pesquisa"
          BeginProperty Font 
-            Name            =   "Century Gothic"
-            Size            =   8.25
+            Name            =   "Verdana"
+            Size            =   9
             Charset         =   0
             Weight          =   400
             Underline       =   0   'False
@@ -209,12 +210,12 @@ Begin VB.Form FSearch
             Strikethrough   =   0   'False
          EndProperty
          ForeColor       =   &H00000000&
-         Height          =   240
+         Height          =   210
          Index           =   1
          Left            =   2340
          TabIndex        =   4
-         Top             =   330
-         Width           =   1425
+         Top             =   345
+         Width           =   1695
       End
    End
    Begin Insignia_Frame.ideFrame ideFrame 
@@ -222,19 +223,19 @@ Begin VB.Form FSearch
       Height          =   300
       Index           =   2
       Left            =   0
-      Top             =   1875
+      Top             =   1905
       Width           =   5595
       _ExtentX        =   9869
       _ExtentY        =   529
       BorderExt       =   6
       BorderWidth     =   5
       BackColor       =   16777215
-      Caption         =   "Contato: codeuapp@gmail.com"
+      Caption         =   "Contato: qualita.app@gmail.com"
       ForeColor       =   10526880
       CaptionAlign    =   3
       BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
-         Name            =   "Tahoma"
-         Size            =   9.75
+         Name            =   "Verdana"
+         Size            =   9
          Charset         =   0
          Weight          =   400
          Underline       =   0   'False
@@ -399,7 +400,7 @@ Private Sub Form_Load()
   Call GetSettings
 End Sub
 
-Private Sub ideFrame_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, Y As Single)
+Private Sub ideFrame_MouseDown(Index As Integer, Button As Integer, Shift As Integer, X As Single, y As Single)
   If Index = cPNLCaption Then Call DragForm
 End Sub
 

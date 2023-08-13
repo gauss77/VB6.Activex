@@ -1,5 +1,5 @@
 VERSION 5.00
-Object = "{C6FEE5AC-DF5F-47A6-BE77-6DCE10AA8AB9}#4.1#0"; "ideDSControl.ocx"
+Object = "{C6FEE5AC-DF5F-47A6-BE77-6DCE10AA8AB9}#4.2#0"; "ideDSControl.ocx"
 Begin VB.Form frmSimple 
    Caption         =   "Form4"
    ClientHeight    =   3195
@@ -11,7 +11,7 @@ Begin VB.Form frmSimple
    ScaleHeight     =   3195
    ScaleWidth      =   7335
    WindowState     =   2  'Maximized
-   Begin Insignia_DSControl.ideDSControl ideDSSimple 
+   Begin Insignia_DSControl.ideDSControl ideDSControl1 
       Align           =   1  'Align Top
       Height          =   405
       Left            =   0
@@ -20,10 +20,15 @@ Begin VB.Form frmSimple
       Width           =   7335
       _ExtentX        =   12938
       _ExtentY        =   714
+      CaptionColor    =   -2147483630
+      BackColor       =   13160660
+      ButtonColor     =   13160660
+      ButtonColorDesab=   9936289
+      ButtonsExtras   =   0
+      ButtonType      =   7
       Modelo          =   1
-      BackColor       =   16777215
-      ButtonColor     =   15987699
-      ButtonColorDesab=   14737632
+      Operacao        =   0
+      Permissoes      =   0
    End
    Begin VB.TextBox Text1 
       DataField       =   "TEXTO"
@@ -269,7 +274,7 @@ Option Explicit
 Private Sub Form_Load()
   Const SQL = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source="
   
-  With ideDSSimple
+  With ideDSControl1
     .Conectar "SELECT * FROM TABELA", SQL & App.Path & "\Teste.mdb;"
     .MontarPesquisa "Código ID,ID,######|Nome,TEXTO,|Data,DATA,##/##/####|Sim Não,SIMNAO,|Numero,NUMRICO,######|HORA,HORA,##:##:##"
   
