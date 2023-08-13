@@ -51,7 +51,7 @@ Begin VB.UserControl ideDSControl
          Left            =   1530
          Style           =   2  'Dropdown List
          TabIndex        =   4
-         ToolTipText     =   "Ordem de exibiï¿½ï¿½o dos dados"
+         ToolTipText     =   "Ordem de exibição dos dados"
          Top             =   40
          Width           =   1875
       End
@@ -81,7 +81,7 @@ Begin VB.UserControl ideDSControl
             Height          =   195
             Left            =   2925
             TabIndex        =   10
-            ToolTipText     =   "Se marcado continua incluido apï¿½s a confirmaï¿½ï¿½o"
+            ToolTipText     =   "Se marcado continua incluido após a confirmação"
             Top             =   75
             Width           =   1755
          End
@@ -90,7 +90,7 @@ Begin VB.UserControl ideDSControl
             Index           =   0
             Left            =   45
             TabIndex        =   8
-            ToolTipText     =   "[F8] - Confirmar operaï¿½ï¿½o ativa"
+            ToolTipText     =   "[F8] - Confirmar a ação"
             Top             =   15
             Width           =   1395
             _ExtentX        =   2461
@@ -117,7 +117,7 @@ Begin VB.UserControl ideDSControl
             Index           =   1
             Left            =   1485
             TabIndex        =   9
-            ToolTipText     =   "[F9] - Cancelar operaï¿½ï¿½o"
+            ToolTipText     =   "[F9] - Cancelar a ação"
             Top             =   15
             Width           =   1395
             _ExtentX        =   2461
@@ -285,7 +285,7 @@ Begin VB.UserControl ideDSControl
          Index           =   4
          Left            =   4230
          TabIndex        =   7
-         ToolTipText     =   "Imprimir Relatï¿½rio"
+         ToolTipText     =   "Imprimir Relatório"
          Top             =   45
          Width           =   360
          _ExtentX        =   635
@@ -361,7 +361,7 @@ Begin VB.UserControl ideDSControl
          Index           =   3
          Left            =   1140
          TabIndex        =   14
-         ToolTipText     =   "[End] - Navegar para o ï¿½ï¿½ltimoregistro"
+         ToolTipText     =   "[End] - Navegar para o último registro"
          Top             =   30
          Width           =   360
          _ExtentX        =   635
@@ -389,7 +389,7 @@ Begin VB.UserControl ideDSControl
          Index           =   2
          Left            =   780
          TabIndex        =   13
-         ToolTipText     =   "[PageDown] - Navegar para o proï¿½ximo registro"
+         ToolTipText     =   "[PageDown] - Navegar para o próximo registro"
          Top             =   30
          Width           =   360
          _ExtentX        =   635
@@ -595,7 +595,7 @@ Attribute VB_Exposed = True
 '---------------------------------------------------------------------------------------
 ' Module    : 25/10/2020 10:28 - ideDSControl
 ' Autor     : Heliomar P. Marques
-' Descriï¿½ï¿½o : Controle para Navegaï¿½ï¿½o e Manipulaï¿½ï¿½o de dados .mdb
+' Descriï¿½ï¿½o : Controle para Navegação e Manipulação de dados .mdb
 '---------------------------------------------------------------------------------------
 
 Option Explicit
@@ -851,7 +851,7 @@ Private Sub ButtonsFuncEnabled(bEnabled As Boolean)
   Next
   
   'Se estiver mandando habilitar botoes entao deve
-  'verificar se ï¿½ permitido utilizar
+  'verificar se é permitido utiliza-lós
   If bEnabled Then
     Me.Permissoes = meDSPermissoes
   Else
@@ -891,15 +891,15 @@ Public Property Let Operacao(ByVal vNewValue As eDSOperacao)
     Dim sDesc As String
     Select Case vNewValue
       Case Is = opAlteracao
-        sDesc = "Operaï¿½ï¿½o de Alteraï¿½ï¿½o"
+        sDesc = "Operação de Alteração"
       Case Is = opInclusao
         If mbAddContFlag Then
-          sDesc = "Operaï¿½ï¿½o de Inclusï¿½o continua"
+          sDesc = "Operação de Inclusão Continua"
         Else
-          sDesc = "Operaï¿½ï¿½o de Inclusï¿½o"
+          sDesc = "Operação de Inclusão"
         End If
       Case Is = opVisualizacao
-        sDesc = "Operaï¿½ï¿½o de Visualizaï¿½ï¿½o"
+        sDesc = "Operação de Visualização"
     End Select
     
     fraPanel(cPNLIdent).Caption = sDesc
@@ -1534,7 +1534,7 @@ Public Sub MontarPesquisa(ByVal psAliasFieldMask As String)
     sField = Trim$(aL(1))
     sMask = LTrim$(aL(2))
      
-    If sMask <> "ï¿½P" Then 'Significa que nao entra na pesquisa
+    If sMask <> "ñP" Then '"ñP" Significa que não entra na pesquisa
       With Combos(cCmbOrder)
         .AddItem sCapt
         
